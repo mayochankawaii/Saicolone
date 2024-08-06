@@ -1,0 +1,2 @@
+module Public::GroupCharactersHelper
+end
