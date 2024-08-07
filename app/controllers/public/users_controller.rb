@@ -14,7 +14,7 @@ class Public::UsersController < ApplicationController
   end
 
   def withdraw
-    @user = user.find(current_user.id)
+    @user = User.find(current_user.id)
     @user.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
@@ -24,6 +24,6 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :profile, :introduction)
+    params.require(:user).permit(:id, :name, :email, :profile, :introduction)
   end
 end
