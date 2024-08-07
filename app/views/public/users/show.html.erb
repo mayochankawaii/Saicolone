@@ -9,13 +9,21 @@
 
           <table class="table">
             <tr>
-              <td style="width: 30%; padding-left: 20px;">名前</td>
-              <td style="width: 70%;"><%= @user.name %>　<%= @user.name %></td>
+              <td>名前</td>
+              <td><%= @user.name %>　<%= @user.name %></td>
+            </tr>
+            <tr>
+              <td>メールアドレス</td>
+              <td><%= @user.email %></td>
             </tr>
 
             <tr>
-              <td style="width: 30%; padding-left: 20px;">メールアドレス</td>
-              <td style="width: 70%;"><%= @user.email %></td>
+          	  <td>profile</td>
+          	  <td><%= @user.profile %></td>
+            </tr>
+            <tr>
+          	  <td>introduction</td>
+          	  <td><%= @user.introduction %></td>
             </tr>
           </table>
 
