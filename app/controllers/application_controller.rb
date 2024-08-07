@@ -4,21 +4,21 @@ class ApplicationController < ActionController::Base
     case resource
     when Admin
       admin_path
-    when Customer
+    when User
       root_path
     else
       root_path
     end
   end
-  
+
   def after_sign_out_path_for(resource)
     case resource
     when Admin
       root_path
-    when Customer
+    when User
       root_path
     else
       root_path
-    end  
-  end  
+    end
+  end
 end
