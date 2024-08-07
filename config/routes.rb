@@ -10,9 +10,12 @@ Rails.application.routes.draw do
     root :to =>"homes#top"
     get '/about' => 'homes#about'
     get "/mypage" => "users#show"
-    resources :users, except: [:new, :index, :show, :create]
-    get '/users/check' => 'users#check'
-    patch '/users/withdraw' => 'users#withdraw'
+    resources :users, except: [:new, :index, :show, :create] do
+      collection do
+        patch :withdraw
+        get :check
+      end
+    end
     resources :groups, except: [:new]
     resources :posts, except: [:new]
     resources :characters

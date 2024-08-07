@@ -25,7 +25,7 @@
           <!--管理者ログイン時-->
           <% elsif admin_signed_in? %>
             <li><div class="header-content"><%= link_to "ユーザー一覧", admin_users_path %></div></li>
-            <li><div class="header-content"><%= link_to "グループ一覧", admin_group_path %></div></li>
+            <li><div class="header-content"><%= link_to "グループ一覧", admin_groups_path %></div></li>
             <li><div class="header-content"><%= link_to "ログアウト", destroy_admin_session_path %></div></li>
 
           <% else %>
