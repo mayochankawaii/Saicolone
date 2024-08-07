@@ -1,14 +1,21 @@
 Rails.application.routes.draw do
-  
+  root :to =>"homes#top"
+  get '/about' => 'homes#about'
+
   # ユーザー用
-  devise_for :users, controllers: {
+  devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
 
-  namespace :public do
-    get '/' => 'homes#top'
-    get '/about' => 'homes#about'
+  scope module: :public do
+    get "/mypage" => "users#mypage"
+    resources :users, except: [:new, :index, :create]
+    resources :groups, except: [:new]
+    resources :posts, except: [:new]
+    resources :characters
+    resources :group_characters, except: [:new, :show, :edit]
+    resources :schedules, except: [:index]
   end
 
   devise_scope :user do
@@ -23,6 +30,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'homes#top'
+    resources :posts, only: [:index, :destroy]
+    resources :groups, only: [:show, :index, :destroy]
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update]
   end
 
   devise_scope :admin do
