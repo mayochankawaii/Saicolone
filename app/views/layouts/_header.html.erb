@@ -1,0 +1,50 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-light" style="padding-top: 16px; margin: 0px;">
+    <div class="header container-fluid">
+      <div class="box1"><%= link_to root_path, class: 'nav-link' do %>
+        <%= image_tag asset_path('logo.png'), size: '60x60' %></div>
+      <% end %>
+
+      <!-- ハンバーガーメニュー -->
+      <div class="openbtn navbar-toggler ml-auto" data-toggle="collapse" data-target=".navbar-collapse" onclick="document.querySelector('.openbtn').classList.toggle('active')">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="collapse navbar-collapse justify-content-around">
+        <ul class="navbar-nav">
+
+          <!--ユーザーログイン時-->
+          <% if user_signed_in? %>
+            <li><div class="header-content"><%= link_to "マイページ", mypage_path %></div></li>
+            <li><div class="header-content"><%= link_to "キャラクター", characters_path %></div></li>
+            <li><div class="header-content"><%= link_to "グループ", groups_path %></div></li>
+            <li><div class="header-content"><%= link_to "ログアウト", destroy_user_session_path %></div></li>
+
+          <!--管理者ログイン時-->
+          <% elsif admin_signed_in? %>
+            <li><div class="header-content"><%= link_to "ユーザー一覧", admin_users_path %></div></li>
+            <li><div class="header-content"><%= link_to "グループ一覧", admin_group_path %></div></li>
+            <li><div class="header-content"><%= link_to "ログアウト", destroy_admin_session_path %></div></li>
+
+          <% else %>
+
+            <!--ログイン前-->
+            <li><div class="header-content"><%= link_to "About", about_path %></div></li>
+            <li><div class="header-content"><%= link_to "キャラクター登録", characters_path %></div></li>
+            <li><div class="header-content"><%= link_to "新規登録", new_user_registration_path %></div></li>
+            <li><div class="header-content"><%= link_to "ログイン", new_user_session_path %></div></li>
+          <% end %>
+            <li><div class="form-group">
+              <form method="get" id="form1" action="https://2e647e39c063408b8a597c5fec5e2a36.vfs.cloud9.ap-northeast-1.amazonaws.com">
+                <button id="sbtn4" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input id="sbox3" name="s" type="text" placeholder="キーワードを入力">
+              </form>
+            </div></li>
+          </ul>
+      </div>
+      </div>
+    </div>
+  </nav>
+</header>

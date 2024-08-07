@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  root :to =>"homes#top"
-  get '/about' => 'homes#about'
 
   # ユーザー用
   devise_for :users,skip: [:passwords], controllers: {
@@ -9,8 +7,12 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-    get "/mypage" => "users#mypage"
-    resources :users, except: [:new, :index, :create]
+    root :to =>"homes#top"
+    get '/about' => 'homes#about'
+    get "/mypage" => "users#show"
+    resources :users, except: [:new, :index, :show, :create]
+    get '/users/check' => 'users#check'
+    patch '/users/withdraw' => 'users#withdraw'
     resources :groups, except: [:new]
     resources :posts, except: [:new]
     resources :characters
