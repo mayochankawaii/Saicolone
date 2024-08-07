@@ -1,9 +1,8 @@
 class CreateGroups < ActiveRecord::Migration[6.1]
   def change
     create_table :groups do |t|
-      t.string :Post
-      t.string :Character
-      t.string :Genre
+      t.integer :user_id
+      t.string :title
 
       t.timestamps
     end
