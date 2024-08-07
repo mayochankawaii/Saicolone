@@ -15,7 +15,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.datetime :remember_created_at
       
       t.string :name
-      t.text :mypage
+      t.text :profile
+      t.text :introduction
 
       t.timestamps null: false
     end
