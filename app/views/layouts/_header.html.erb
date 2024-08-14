@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-md navbar-light" style="padding-top: 16px; margin: 0px;">
     <div class="header container-fluid">
       <div class="box1"><%= link_to root_path, class: 'nav-link' do %>
-        <%= image_tag asset_path('logo.png'), size: '60x60' %></div>
+        <%= image_tag asset_path('logo.png'), size: '48x48' %></div>
       <% end %>
 
       <!-- ハンバーガーメニュー -->
@@ -26,13 +26,13 @@
           <% elsif admin_signed_in? %>
             <li><div class="header-content"><%= link_to "ユーザー一覧", admin_users_path %></div></li>
             <li><div class="header-content"><%= link_to "グループ一覧", admin_groups_path %></div></li>
+            <li><div class="header-content"><%= link_to "ジャンル作成", admin_genres_path %></div></li>
             <li><div class="header-content"><%= link_to "ログアウト", destroy_admin_session_path %></div></li>
 
           <% else %>
 
             <!--ログイン前-->
             <li><div class="header-content"><%= link_to "About", about_path %></div></li>
-            <li><div class="header-content"><%= link_to "キャラクター登録", characters_path %></div></li>
             <li><div class="header-content"><%= link_to "新規登録", new_user_registration_path %></div></li>
             <li><div class="header-content"><%= link_to "ログイン", new_user_session_path %></div></li>
           <% end %>

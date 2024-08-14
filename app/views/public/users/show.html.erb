@@ -1,35 +1,29 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h4>マイページ</h4>
-       <div class="row">
-        <div class="col-md">
-          <p>登録情報
-            <%= link_to "編集", edit_user_path(@user), class:"btn btn-primary" %>
+      <div class="d-flex justify-content-between">
+        <h4 class="pt-2"><%= @user.name %> のマイページ</h4>
+        <%= link_to "編集", edit_user_path(@user), class: "btn btn-primary" %>
+      </div>
 
-          <table class="table">
-            <tr>
-              <td>名前</td>
-              <td><%= @user.name %>　<%= @user.name %></td>
-            </tr>
-            <tr>
-              <td>メールアドレス</td>
-              <td><%= @user.email %></td>
-            </tr>
+      <% if @user.profile.present? %>
+        <div class="py-4">
+          <h5>プロフィール</h5>
+          <%= safe_join(@user.profile.split("\n"), tag(:br)) %><br>
+        </div>
+      <% end %>
+      <% if @user.profile.present? %>
+      	<div class="py-4">
+      	  <h5>TRPG詳細</h5>
+      	  <%= safe_join(@user.introduction.split("\n"),tag(:br))%><br>
+        </div>
+      <% end %>
 
-            <tr>
-          	  <td>profile</td>
-          	  <td><%= @user.profile %></td>
-            </tr>
-            <tr>
-          	  <td>introduction</td>
-          	  <td><%= @user.introduction %></td>
-            </tr>
-          </table>
+      <div class="wrapper pt-4">
+        <button type="button" class="btn btn-primary" onclick="location.href='<%= characters_path %>'">キャラクター一覧</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='<%= groups_path %>'">グループ一覧</button>
+      </div>
 
-          <p>キャラクター     <%= link_to "一覧を見る", characters_path, class:"btn btn-primary" %></p>
-
-          <p>参加中のグループ <%= link_to "一覧を見る", groups_path, class:"btn btn-primary" %></p>
     </div>
   </div>
 </div>
