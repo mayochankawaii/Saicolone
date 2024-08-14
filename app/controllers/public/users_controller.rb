@@ -1,16 +1,25 @@
 class Public::UsersController < ApplicationController
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+
   def edit
     @user = current_user
   end
 
   def show
-    @user = current_user
+    if current_user
+      @user = current_user
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def update
     @user = current_user
-    @user.update(user_params)
-    redirect_to mypage_path
+    if @user.update(user_params)
+      redirect_to mypage_path
+    else
+      render :edit
+    end
   end
 
   def withdraw
@@ -25,5 +34,12 @@ class Public::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:id, :name, :email, :profile, :introduction)
+  end
+
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    unless @user.id == current_user.id
+      redirect_to mypage_path
+    end
   end
 end
