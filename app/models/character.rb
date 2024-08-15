@@ -9,4 +9,10 @@ class Character < ApplicationRecord
   validates :status, presence: true
   validates :genre, presence: true
 
+# 検索方法分岐
+  def self.looks(search, word)
+    if search == "partial"
+      @character = Character.where("name LIKE?","%#{word}%")
+    end
+  end
 end

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :characters
     resources :group_characters, except: [:new, :show, :edit]
     resources :schedules, except: [:index]
+    get "/search", to: "searches#search"
   end
 
   devise_scope :user do
@@ -39,6 +40,7 @@ Rails.application.routes.draw do
     resources :groups, only: [:show, :index, :destroy]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :users, only: [:index, :show, :edit, :update]
+    get "/search", to: "searches#search"
   end
 
   devise_scope :admin do
