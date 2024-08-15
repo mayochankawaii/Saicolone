@@ -2,25 +2,23 @@
   <div class="row">
     <div class="col">
       <h4>キャラクター一覧</h4>
-      <%= link_to "新規登録", new_character_path, class:"btn btn-success" %>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>キャラクターID</th>
-            <th>キャラクター名</th>
-            <th>ジャンル</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @characters.each do |character| %>
-            <tr>
-              <td><%= character.id %></td>
-              <td><%= link_to character.name,character_path(character.id) %></td>
-              <td><%= Genre.find(character.genre_id).name %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+        <%= link_to "新規登録", new_character_path, class:"btn btn-success" %>
+      <div class="row">
+        <% @characters.each do |character| %>
+          <div class="col-md-3">
+            <div class="card mb-4">
+              <%= link_to character_path(character), class: "card-link" do %>
+              <div style="max-width: 100%; max-height: 180px; overflow: hidden; position: relative;">
+                <%= image_tag character.image, class: "card-img-top", style: "object-fit: contain; width: 100%; height: 100%; object-position: center;" %>
+              </div>
+                <div class="card-body">
+                  <h6 class="card-title"><%= character.name %></h6>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
