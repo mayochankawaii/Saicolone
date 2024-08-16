@@ -16,10 +16,12 @@ Rails.application.routes.draw do
         get :check
       end
     end
-    resources :groups, except: [:new]
+    resources :groups do
+      resource :group_user, only: [:create, :destroy]
+      # resource :group_character, except: [:new, :show, :edit]
+    end
     resources :posts, except: [:new]
     resources :characters
-    resources :group_characters, except: [:new, :show, :edit]
     resources :schedules, except: [:index]
     get "/search", to: "searches#search"
   end
