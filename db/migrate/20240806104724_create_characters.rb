@@ -5,7 +5,7 @@ class CreateCharacters < ActiveRecord::Migration[6.1]
       t.integer :genre_id
       t.string :name
       t.text :status
-      t.text :introduction
+      t.text :description
 
       t.timestamps
     end

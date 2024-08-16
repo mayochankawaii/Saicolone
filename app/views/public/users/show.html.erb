@@ -15,7 +15,7 @@
       <% if @user.profile.present? %>
       	<div class="py-4">
       	  <h5>TRPG詳細</h5>
-      	  <%= safe_join(@user.introduction.split("\n"),tag(:br))%><br>
+      	  <%= safe_join(@user.description.split("\n"),tag(:br))%><br>
         </div>
       <% end %>
 
