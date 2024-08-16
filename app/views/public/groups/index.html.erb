@@ -1,0 +1,9 @@
+<h4>グループ一覧</h4>
+<% if user_signed_in? %>
+  <%= link_to '新しいグループを作成', new_group_path %>
+<% end %>
+<% @groups.each do |group| %>
+  <li>
+    <%= link_to group.title, group_path(group.id) %>
+  </li>
+<% end %>

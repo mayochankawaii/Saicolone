@@ -50,7 +50,7 @@ class Public::CharactersController < ApplicationController
   private
 
   def character_params
-    params.require(:character).permit(:genre_id, :name, :status, :introduction, :image)
+    params.require(:character).permit(:genre_id, :name, :status, :description, :image)
   end
 
   def ensure_correct_user
