@@ -17,4 +17,6 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+require('jquery');
+
 import "./btn"

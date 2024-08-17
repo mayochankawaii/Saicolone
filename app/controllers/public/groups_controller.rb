@@ -4,14 +4,19 @@ class Public::GroupsController < ApplicationController
 
   def index
     @groups = Group.all
+    @group_lists = Group.all.order(:id)
+    # @group_joining = GroupUser.where(user_id: current_user.id)
+    # @group_lists_none = "You don't join any groups."
   end
 
   def show
     @group = Group.find(params[:id])
+    @messages = @group.messages
   end
 
   def new
     @group = Group.new
+    @group.users << current_user
   end
 
   def create
@@ -28,7 +33,7 @@ class Public::GroupsController < ApplicationController
   def edit
     @group = Group.find(params[:id])
   end
-  
+
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
@@ -37,7 +42,7 @@ class Public::GroupsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     group = Group.find(params[:id])
     group.destroy
@@ -49,7 +54,7 @@ class Public::GroupsController < ApplicationController
   def group_params
     params.require(:group).permit(:title, :description)
   end
-  
+
   def owner?
     group = Group.find(params[:id])
     if group.owner != current_user

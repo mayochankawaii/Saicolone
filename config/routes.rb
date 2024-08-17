@@ -20,7 +20,8 @@ Rails.application.routes.draw do
       resource :group_user, only: [:create, :destroy]
       # resource :group_character, except: [:new, :show, :edit]
     end
-    resources :posts, except: [:new]
+    mount ActionCable.server => '/cable'
+    # resources :messages
     resources :characters
     resources :schedules, except: [:index]
     get "/search", to: "searches#search"

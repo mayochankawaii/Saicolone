@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_08_16_052020) do
+ActiveRecord::Schema.define(version: 2024_08_16_075434) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -91,10 +91,10 @@ ActiveRecord::Schema.define(version: 2024_08_16_052020) do
     t.integer "owner_id"
   end
 
-  create_table "posts", force: :cascade do |t|
+  create_table "messages", force: :cascade do |t|
     t.integer "user_id"
     t.integer "group_id"
-    t.text "body"
+    t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
