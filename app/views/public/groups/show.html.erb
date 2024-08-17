@@ -1,5 +1,5 @@
-<h4>グループ名：<%= @group.title %></h4>
-  <h5>グループオーナー：<%= @group.owner.name %></h5>
+<h4><%= @group.title %></h4>
+  <h5>オーナー：<%= @group.owner.name %></h5>
 
 <p><strong>説明:</strong> <%= @group.description %></p>
 
@@ -15,9 +15,20 @@
     <% end %>
   <% end %>
 
-<h4>グループユーザー</h4>
+<h5>ユーザー</h5>
 <% @group.group_users.each do |member| %>
   <p><%= member.user.name %></p>
 <% end %>
 
 <%= link_to '一覧に戻る', groups_path %>
+
+<h5>メッセージ</h5>
+<%#ここの data-group_id を使ってjs側で部屋を見分ける %>
+<div id='messages' data-group_id="<%= @group.id %>">
+  <%= render @messages %>
+</div>
+
+<form>
+  <%#= label_tag :content %>
+  <input type="text" data-behavior="group_speaker" value="" placeholder="メッセージを送信">
+</form>
