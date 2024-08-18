@@ -1,3 +1,5 @@
-<div class='message'>
-  <p><%= "#{message.user.name}: #{message.content}" %></p>
+<div class="message" id="<%= message.id %>">
+  <p><%= "#{message.user.name}: #{message.content}" %>
+    <button data-id="<%= message.id %>" class="delete-btn btn btn-danger mr-5" data-confirm="メッセージを削除しますか？">削除</button>
+  </p>
 </div>
