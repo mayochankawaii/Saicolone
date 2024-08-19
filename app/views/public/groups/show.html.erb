@@ -1,34 +1,69 @@
-<h4><%= @group.title %></h4>
-  <h5>オーナー：<%= @group.owner.name %></h5>
+<div class="container">
+  <div class="row">
+    <div class="col">
 
-<p><strong>説明:</strong> <%= @group.description %></p>
+      <div class="d-flex justify-content-between">
+        <div class="d-flex" style="margin-top: 4px;">
+          <h4><%= @group.title %></h4>
+          <p style="margin: 4px 0px 0px 40px;" >オーナー：<%= @group.owner.name %></p>
+        </div>
+        <%= link_to groups_path, class: "btn btn-flat" do %>
+          <span>一覧に戻る</span>
+        <% end %>
+      </div>
 
-  <% if user_signed_in? %>
-  <% if @group.owner == current_user %>
-    <%= link_to "グループを編集する", edit_group_path(@group.id) %>
-    <%= link_to "グループを削除する", group_path(@group.id), method: :delete, data: {confirm: "本当にグループを消しますか？"} %>
+        <div class="row">
+          <div class="col-md">
 
-    <% elsif @group.group_users.exists?(user_id: current_user.id) %>
-      <%= link_to "脱退する",  group_group_user_path(@group), method: :delete %>
-    <% else %>
-      <%= link_to "参加する", group_group_user_path(@group), method: :post%>
-    <% end %>
-  <% end %>
+            <div class="py-4">
+              <p><strong>説明</strong></p>
+              <p><%= @group.description %></p>
 
-<h5>ユーザー</h5>
-<% @group.group_users.each do |member| %>
-  <p><%= member.user.name %></p>
-<% end %>
+              <% if user_signed_in? %>
+              <% if @group.owner == current_user %>
+                <%= link_to 'グループを編集する', edit_group_path(@group.id), class: "btn btn-primary" %>
+                <%= link_to "グループを削除する", group_path(@group.id), method: :delete, data: {confirm: "本当にグループを消しますか？"}, class:"btn btn-danger" %>
 
-<%= link_to '一覧に戻る', groups_path %>
+                <% elsif @group.group_users.exists?(user_id: current_user.id) %>
+                  <%= link_to "脱退する",  group_group_user_path(@group), method: :delete, data: { confirm: "本当に脱退しますか？" }, class:"btn btn-danger" %>
+                <% else %>
+                  <%= link_to "参加する", group_group_user_path(@group), method: :post, class: "btn btn-primary" %>
+                <% end %>
+              <% end %>
 
-<h5>メッセージ</h5>
-<%#ここの data-group_id を使ってjs側で部屋を見分ける %>
-<div id='messages' data-group_id="<%= @group.id %>">
-  <%= render @messages %>
+            </div>
+
+          <div class="py-4">
+            <h5>ユーザー</h5>
+            <div class="group-members">
+              <% @group.group_users.each do |member| %>
+                <p><%= member.user.name %></p>
+              <% end %>
+            </div>
+          </div>
+
+          <% if user_signed_in? %>
+            <% if @group.group_users.exists?(user_id: current_user.id) %>
+              <h5>メッセージ</h5>
+              <%#ここの data-group_id を使ってjs側で部屋を見分ける %>
+              <div id='messages' data-group_id="<%= @group.id %>">
+                <div id="show_user" data-show_user="<%= current_user.id %>"></div>
+                <div class="chat_box">
+                  <%= render @messages %>
+                </div>
+              </div>
+
+              <div class="input-area">
+                <div class="input-frame disp-flex text-input" >
+                  <input type="text" data-behavior="group_speaker" value="" placeholder="メッセージを送信">
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
-
-<form>
-  <%#= label_tag :content %>
-  <input type="text" data-behavior="group_speaker" value="" placeholder="メッセージを送信">
-</form>

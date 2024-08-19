@@ -21,6 +21,23 @@ $(function(){
            $('#messages').append(data['message']);
         }
       },
+      
+      // received: function(data) {
+      //   // return $('#messages').append(data['message']);
+      //   if (data['id']) { // 取得したデータがIDだったらという条件分岐で判断
+      //     const id = '#' + data['id'];
+      //     $(id).remove();
+      //   } else {
+      //       const show_user = $('#show_user').data('show_user');
+      //     if (data['message_user'] == show_user) {
+      //       $('#messages').append(data['message']);
+      //       $('.message_box').animate({scrollTop: $('.message_box')[0].scrollHeight});
+      //     } else {
+      //       $('#messages').append(data['message']);
+      //       $('.message_box').animate({scrollTop: $('.message_box')[0].scrollHeight});
+      //     }
+      //   }
+      // },
 
 
       speak: function(message, group_id) {

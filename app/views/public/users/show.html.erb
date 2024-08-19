@@ -12,7 +12,7 @@
           <%= safe_join(@user.profile.split("\n"), tag(:br)) %><br>
         </div>
       <% end %>
-      <% if @user.profile.present? %>
+      <% if @user.description.present? %>
       	<div class="py-4">
       	  <h5>TRPG詳細</h5>
       	  <%= safe_join(@user.description.split("\n"),tag(:br))%><br>
@@ -20,8 +20,12 @@
       <% end %>
 
       <div class="wrapper pt-4">
-        <button type="button" class="btn btn-primary" onclick="location.href='<%= characters_path %>'">キャラクター一覧</button>
-        <button type="button" class="btn btn-primary" onclick="location.href='<%= groups_path %>'">グループ一覧</button>
+        <%= link_to characters_path, class: "btn btn-flat" do %>
+          <span>キャラクター一覧</span>
+        <% end %>
+        <%= link_to groups_path, class: "btn btn-flat" do %>
+          <span>グループ一覧</span>
+        <% end %>
       </div>
 
     </div>
