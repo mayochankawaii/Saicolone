@@ -49,4 +49,6 @@ Rails.application.routes.draw do
   devise_scope :admin do
     get '/admin/sign_out', to: 'admin/sessions#destroy'
   end
+  
+  mount ActionCable.server => '/cable'
 end

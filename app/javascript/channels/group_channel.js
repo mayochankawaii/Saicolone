@@ -21,7 +21,7 @@ $(function(){
            $('#messages').append(data['message']);
         }
       },
-      
+
       // received: function(data) {
       //   // return $('#messages').append(data['message']);
       //   if (data['id']) { // 取得したデータがIDだったらという条件分岐で判断
