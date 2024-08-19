@@ -9,7 +9,8 @@ class GroupChannel < ApplicationCable::Channel
 
   def speak(data)
     Message.create! content: data['message'], user_id: current_user.id, group_id: params['group']
-    # ActionCable.server.broadcast "group_channel_#{params['group_id']}", message: render_message(message), message_user: current_user.id
+    template = ApplicationController.renderer.render(partial: 'messages/message', locals: { message: message, current_user: current_user }) # current_user変数にconnection.rbで取得したcurrent_userを設定
+    ActionCable.server.broadcast "group_channel_#{params['group_id']}", message: template
   end
 
   def destroy(data)
