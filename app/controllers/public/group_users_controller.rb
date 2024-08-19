@@ -12,7 +12,7 @@ class Public::GroupUsersController < ApplicationController
     group = Group.find(params[:group_id])
     user = current_user
     group.users.delete(user)
-    redirect_to root_path
+    redirect_to groups_path
   end
 end
 

@@ -102,6 +102,42 @@ body {
   margin-top: 1.1rem;
 }
 
+/* チャット内容 */
+.posted-chat-list {
+  width: 100%;
+  height: auto;
+}
+
+.posted-chat-frame {
+  // padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+}
+
+.input-area {
+  background-color: white;
+  position:fixed;
+  bottom: 0;
+  width: calc(100% - 280px);
+  min-width:800px;
+  height:64px;
+}
+
+.input-chat-text-area {
+  width:100%;
+}
+
+.input-area input[type=text] {
+  width: 100%;
+  height: 40px;
+  border-color: #040450;
+  border-radius: 4px;
+}
+
+.input-area input[type=text]:focus {
+  border-color: #040450;
+}
+
 // ボタン関連
 .btn,
 a.btn,
@@ -141,20 +177,20 @@ button.btn {
 .btn-flat:before {
   position: absolute;
   top: 0;
-  left: 30px;
-  width: 150%;
-  height: 500%;
+  left: 5px;
+  width: 100%;
+  height: 100%;
   content: '';
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
-  -webkit-transform: translateX(-98%) translateY(-70%) rotate(135deg);
-  transform: translateX(-98%) translateY(-70%) rotate(135deg);
-  background: #0E46A3;
+  -webkit-transform: translateX(-96%);
+  transform: translateX(-96%);
+  background: #9AC8CD;
 }
 
 .btn-flat:hover:before {
-  -webkit-transform: translateX(-9%) translateY(-25%) rotate(135deg);
-  transform: translateX(-9%) translateY(-25%) rotate(135deg);
+  -webkit-transform: translateX(0%);
+  transform: translateX(0%);
 }
 
 .wrapper {
@@ -222,7 +258,18 @@ button.btn {
     width: 30%;
 }
 
+/* グループ */
+.group-list {
+  list-style: none;
+  padding: 0;
+}
 
+.group-item {
+  margin-bottom: 10px;
+}
+
+
+/* 画面サイズ設定 */
 @media(max-width: 768px) {  // mdサイズ以下の場合に適用
   .row {
     display: block;

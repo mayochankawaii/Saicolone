@@ -1,9 +1,24 @@
-<h4>グループ一覧</h4>
-<% if user_signed_in? %>
-  <%= link_to '新しいグループを作成', new_group_path %>
-<% end %>
-<% @groups.each do |group| %>
-  <li>
-    <%= link_to group.title, group_path(group.id) %>
-  </li>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <div class="d-flex justify-content-between">
+        <h4 class="group-list-title">グループ一覧</h4>
+        <% if user_signed_in? %>
+          <%= link_to new_group_path, class: "btn btn-flat" do %>
+            <span>グループを作成</span>
+          <% end %>
+        <% end %>
+      </div>
+
+      <ul class="group-list">
+        <% @groups.each do |group| %>
+          <li class="group-item">
+            # <%= link_to group.title, group_path(group.id), class: "group-link" %>
+          </li>
+        <% end %>
+      </ul>
+
+    </div>
+  </div>
+</div>
