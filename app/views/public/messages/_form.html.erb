@@ -1,0 +1,13 @@
+<div class="input-area">
+  <%= form_with model: [group, message], local: false do |f| %>
+    <div class="input-frame disp-flex">
+      <div class="input-chat-text-area">
+        <%#= f.text_area :content, placeholder: "メッセージを入力", class: "input-chat-text" %>
+        <%= f.text_area :content, autocomplete: 'off', placeholder: "メッセージを入力", class: 'form-control' %>
+      </div>
+      <div class="chat-submit-btn-area">
+        <%= f.submit "送信", class: 'chat-send-btn' %>
+      </div>
+    </div>
+  <% end %>
+</div>

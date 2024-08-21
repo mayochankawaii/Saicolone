@@ -13,11 +13,13 @@
       <tr>
         <td width="125">
           <div style="max-height: 280px; overflow: hidden;">
-            <%= image_tag character.image, style: "object-fit: contain; width: 100px; height: 100px; object-position: center;" %>
+            <%= link_to(character) do %>
+              <%= image_tag character.image, style: "object-fit: contain; width: 100px; height: 100px; object-position: center;" %>
+            <% end %>
           </div>
         </td>
         <td>
-          <%= character.name %>
+          <%= link_to character.name,character %>
         </td>
         <td width="100">
           <%= character.genre ? character.genre.name : 'ジャンルが設定されていません' %>

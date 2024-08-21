@@ -19,9 +19,9 @@ Rails.application.routes.draw do
     resources :groups do
       resource :group_user, only: [:create, :destroy]
       # resource :group_character, except: [:new, :show, :edit]
+      resources :messages, only: [:create, :destroy]
     end
     mount ActionCable.server => '/cable'
-    # resources :messages
     resources :characters
     resources :schedules, except: [:index]
     get "/search", to: "searches#search"
@@ -49,6 +49,6 @@ Rails.application.routes.draw do
   devise_scope :admin do
     get '/admin/sign_out', to: 'admin/sessions#destroy'
   end
-  
+
   mount ActionCable.server => '/cable'
 end

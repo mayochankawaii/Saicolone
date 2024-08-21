@@ -11,7 +11,8 @@ class Public::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @messages = @group.messages
+    @messages = @group.messages#.order(created_at: :desc)
+    @message = Message.new
   end
 
   def new
