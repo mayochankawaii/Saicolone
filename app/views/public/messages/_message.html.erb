@@ -3,9 +3,7 @@
     <div class="posted-chat-content">
       <span><b><%= "#{message.user.name}" %></b></span>&nbsp;&nbsp;<small><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></small>
       <p><%= "#{message.content}" %>
-        <% if message.user == current_user %>
-          <button data-id="<%= message.id %>" class="delete-btn btn btn-danger" data-confirm="メッセージを削除しますか？">削除</button>
-        <% end %>
+      <button data-id="<%= message.id %>" class="delete-btn btn btn-danger" data-confirm="メッセージを削除しますか？">削除</button>
       </p>
     </div>
   </div>

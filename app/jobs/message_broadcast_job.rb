@@ -3,10 +3,11 @@ class MessageBroadcastJob < ApplicationJob
 
   # ブロードキャスト(一つのネットワークの中にあるすべてのホストに対してデータを送る。)
   def perform(message)
-    channel_name = "group_channel_#{message.group_id}"
-    data = { message: render_message(message) }
+    # channel_name = "group_channel_#{message.group_id}"
+    # data = { message: render_message(message) }
 
-    ActionCable.server.broadcast(channel_name, data)
+    # ActionCable.server.broadcast(channel_name, data)
+    ActionCable.server.broadcast 'group_channel', message: render_message(message)
   end
 
   # app/views/message/_message.html.erbを呼び出す。

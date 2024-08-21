@@ -44,19 +44,24 @@
 
           <% if user_signed_in? %>
             <% if @group.group_users.exists?(user_id: current_user.id) %>
-            <div id="message_count">
-              <%= render 'public/messages/count', messages: @messages %>
-            </div>
-            <div id="message_index">
-              <%= render 'public/messages/index', group: @group, message: @message %>
-            </div>
-              <%= render 'public/messages/form', group: @group, message: @message %>
+              <h5>メッセージ</h5>
+              <%#ここの data-group_id を使ってjs側で部屋を見分ける %>
+              <div id='messages' data-group_id="<%= @group.id %>">
+              <div id="show_user" data-show_user="<%= current_user.id %>"></div>
+                <div class="chat_box">
+                  <div id="messages">
+                    <%= render @messages %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="input-area">
+                <div class="input-frame disp-flex text-input" >
+                  <input type="text" data-behavior="group_speaker" value="" placeholder="メッセージを送信">
+                </div>
+              </div>
             <% end %>
           <% end %>
-          <br>
-          <br>
-          <br>
-          <br>
 
         </div>
       </div>

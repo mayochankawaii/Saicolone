@@ -1,34 +1,40 @@
-<div class="group">
-  <h4 class="form-title">グループ編集画面</h4>
-  
-  <div class="group-form">
-    <%= form_with model: @group do |f| %>
-      <% if @group.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= @group.errors.count %> つのエラーが発生しました。</h2>
-          <ul>
-            <% @group.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+    <h4 class="form-title">グループ編集画面</h4>
+      <div class="row">
+        <div class="col-md">
+
+          <%= form_with model: @group do |f| %>
+            <% if @group.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= @group.errors.count %> つのエラーが発生しました。</h2>
+                <ul>
+                  <% @group.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
             <% end %>
-          </ul>
+
+            <div class="form-group">
+              <%= f.label :title, 'グループ名' %>
+              <div>
+                <%= f.text_field :title, autofocus: true, class: "form-control text-input", style: "width:40%" %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :description, '詳細' %>
+              <div>
+                <%= f.text_area :description, rows:'8', class: "form-control text-input" %>
+              </div>
+            </div>
+
+            <%= f.submit "保存する", class: "btn btn-success" %>
+            <%= link_to '戻る', group_path(@group.id), class:"btn btn-primary" %>
+          <% end %>
+
         </div>
-      <% end %>
-    
-      <div class="field">
-        <%= f.label :title, 'グループ名' %>
-        <%= f.text_field :title, autofocus: true, class: "text-input" %>
       </div>
-    
-      <div class="field">
-        <%= f.label :description, '詳細' %>
-        <%= f.text_area :description, class: "text-input" %>
-      </div>
-    
-      <div class="actions">
-        <%= f.submit "保存する", class: "submit-button" %>
-      </div>
-    <% end %>
-    
-    <%= link_to '戻る', group_path(@group.id), class: "nav-link back" %>
-  </div>
-</div>

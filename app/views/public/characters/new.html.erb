@@ -7,22 +7,20 @@
         <div>
           <%= f.label :image, 'キャラクター画像' %>
           <%= f.file_field :image %>
+          <%= f.label :genre, 'ジャンル' %>
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: true %>
         </div>
         <div>
           <%= f.label :name, 'キャラクター名' %>
-          <%= f.text_field :name %>
+          <%= f.text_field :name, autofocus: true, class: "form-control text-input", style: "width:40%" %>
         </div>
         <div>
           <%= f.label :status, 'ステータス' %>
-          <%= f.text_area :status %>
+          <%= f.text_area :status, rows:'8', class: "form-control text-input" %>
         </div>
         <div>
           <%= f.label :description, 'キャラクター説明' %>
-          <%= f.text_area :description %>
-        </div>
-        <div>
-          <%= f.label :genre, 'ジャンル' %>
-          <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: true %>
+          <%= f.text_area :description, rows:'8', class: "form-control text-input" %>
         </div>
       <button class="btn btn-success">
         <span>新規投稿</span>
