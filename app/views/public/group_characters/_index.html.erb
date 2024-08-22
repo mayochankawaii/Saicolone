@@ -2,14 +2,14 @@
   <% if group.owner == current_user %>
     <div class="d-flex justify-content-between">
       <h5>キャラクター</h5>
-      <%= link_to "一覧", group_group_characters_path %> <!--追加されたキャラクターを一覧で確認する-->
+      <%= link_to "一覧", group_group_characters_path(group.id) %> <!--追加されたキャラクターを一覧で確認する-->
     </div>
     追加されたキャラクターをすべて表示
 
   <% elsif group.group_users.exists?(user_id: current_user.id) %>
     <div class="d-flex justify-content-between">
       <h5>キャラクター</h5>
-      <%= link_to "追加", group_group_characters_path %>
+      <%= link_to "追加", group_group_characters_path(group.id) %>
     </div>
     追加されたキャラクターを表示
     削除する

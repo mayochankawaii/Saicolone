@@ -5,13 +5,15 @@ class Public::GroupCharactersController < ApplicationController
   def index
     @character = Character.new
     @characters = current_user.characters
+    @group = Group.find(params[:group_id])
   end
 
   def create
     group = Group.find(params[:group_id])
-    user = current_user
-    group_character = group_character.new
-    group_character.user_id = current_user.id
+    character = Character.find(params[:character_id])
+    # user = current_user
+    group_character = GroupCharacter.new
+    group_character.character_id = character.id
     group_character.group_id = group.id
     group_character.save
     redirect_to group_path(group.id)

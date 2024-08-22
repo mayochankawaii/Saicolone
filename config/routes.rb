@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     end
     resources :groups do
       resource :group_user, only: [:create, :destroy]
-      resource :group_characters
+      resources :group_characters
       resources :messages, only: [:create, :destroy]
     end
     mount ActionCable.server => '/cable'
