@@ -29,6 +29,19 @@ class Public::GroupsController < ApplicationController
     else
       render :new
     end
+
+    @group_character = GroupCharacter.new(group_character_params)
+    @group_character.customer_id = current_customer.id
+    @group_character.character_id = group_character_params[:character_id]
+    if GroupCharacter.find_by(character_id: params[:group_character][:character_id]).present?
+      existing_group_character = GroupCharacter.find_by(character_id: params[:group_character][:character_id])
+      existing_group_character.amount += params[:group_character][:amount].to_i
+      existing_group_character.update(amount: existing_group_character.amount)
+      redirect_to group_characters_path
+    else
+      @group_character.save
+      redirect_to group_path(@group.id)
+    end
   end
 
   def edit
@@ -45,6 +58,8 @@ class Public::GroupsController < ApplicationController
   end
 
   def destroy
+    @group_character = current_customer.group_characters.find(params[:id])
+    @group_character.destroy
     group = Group.find(params[:id])
     group.destroy
     redirect_to groups_path

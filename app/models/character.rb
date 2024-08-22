@@ -1,5 +1,6 @@
 class Character < ApplicationRecord
   has_many :group_characters
+  has_many :groups, through: :group_characters
   belongs_to :user#, optional: true
   belongs_to :genre
 

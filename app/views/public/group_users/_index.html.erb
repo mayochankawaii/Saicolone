@@ -1,0 +1,14 @@
+<div class="side-bar">
+  <div>
+    <%= link_to groups_path, class: "btn btn-flat" do %>
+      <span>グループ一覧</span>
+    <% end %>
+  </div><br>
+  <h5>オーナー：<%= group.owner.name %></h5><br>
+  <h5>ユーザー</h5>
+  <div class="group-members">
+    <% group.group_users.each do |member| %>
+      <p><%= member.user.name %></p>
+    <% end %>
+  </div>
+</div>

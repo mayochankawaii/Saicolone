@@ -3,7 +3,7 @@ class Public::CharactersController < ApplicationController
 
   def index
     @character = Character.new
-    @characters = Character.all
+    @characters = current_user.characters
   end
 
   def new

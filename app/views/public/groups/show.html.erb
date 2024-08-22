@@ -1,45 +1,23 @@
-<div class="container">
+<div class="container" style="margin-left: 0px;margin-right: 0px;">
   <div class="row">
-    <div class="col">
+    <div class="col-md-3">
+      <%= render 'public/group_users/index', group: @group %>
+      <%= render 'public/group_characters/index', group: @group %>
+      <%= render 'public/group_users/check', group: @group %>
+    </div>
 
+    <div class="col-md-9">
       <div class="d-flex justify-content-between">
         <div class="d-flex" style="margin-top: 4px;">
           <h4><%= @group.title %></h4>
-          <p style="margin: 4px 0px 0px 40px;" >オーナー：<%= @group.owner.name %></p>
         </div>
-        <%= link_to groups_path, class: "btn btn-flat" do %>
-          <span>一覧に戻る</span>
-        <% end %>
       </div>
-
-        <div class="row">
-          <div class="col-md">
-
-            <div class="py-4">
-              <p><strong>説明</strong></p>
-              <p><%= @group.description %></p>
-
-              <% if user_signed_in? %>
-              <% if @group.owner == current_user %>
-                <%= link_to 'グループを編集する', edit_group_path(@group.id), class: "btn btn-primary" %>
-                <%= link_to "グループを削除する", group_path(@group.id), method: :delete, data: {confirm: "本当にグループを消しますか？"}, class:"btn btn-danger" %>
-
-                <% elsif @group.group_users.exists?(user_id: current_user.id) %>
-                  <%= link_to "脱退する",  group_group_user_path(@group), method: :delete, data: { confirm: "本当に脱退しますか？" }, class:"btn btn-danger" %>
-                <% else %>
-                  <%= link_to "参加する", group_group_user_path(@group), method: :post, class: "btn btn-primary" %>
-                <% end %>
-              <% end %>
-
-            </div>
+      <div class="row">
+        <div class="col-md">
 
           <div class="py-4">
-            <h5>ユーザー</h5>
-            <div class="group-members">
-              <% @group.group_users.each do |member| %>
-                <p><%= member.user.name %></p>
-              <% end %>
-            </div>
+            <p><strong>説明</strong></p>
+            <p><%= @group.description %></p>
           </div>
 
           <% if user_signed_in? %>
@@ -60,7 +38,7 @@
 
         </div>
       </div>
-
     </div>
+
   </div>
 </div>
