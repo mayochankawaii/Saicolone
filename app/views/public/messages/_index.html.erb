@@ -17,7 +17,7 @@
     <% end %>
   </div>
     <!-- メッセージの表示 -->
-    <p><%= message.content %></p>
+    <p><%= safe_join(message.content.split("\n"),tag(:br))%></p>
   </div>
 
 <% end %>

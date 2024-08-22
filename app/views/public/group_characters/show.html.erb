@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h4>キャラクター詳細</h4>
+
+      <div class="row">
+        <div class="col-4" style="max-width: 100%; overflow: hidden; position: relative;">
+          <% if @character.image.attached? %>
+          <%= image_tag @character.image, class: "img-fluid", style: "width: 100%; height: 100%; object-fit: cover; object-position: center;" %>
+          <% else %>
+            <%= image_tag 'no_image', class: "img-fluid", style: "width: 100%; height: 100%; object-fit: cover; object-position: center;" %>
+          <% end %>
+        </div>
+        <div class="col-md-6">
+          <table class="table">
+            <tr>
+              <td>キャラクター名</td>
+              <td><%= @character.name %></td>
+            </tr>
+            <tr>
+              <td>ジャンル</td>
+              <td><%= Genre.find(@character.genre_id).name %></td>
+            </tr>
+            <tr>
+              <td>ステータス</td>
+              <td><%= @character.status %></td>
+            </tr>
+          </table>
+
+          <div style="padding: 0.75rem;">
+          <% if @character.description.present? %>
+            キャラクター説明<br><br>
+            <%= safe_join(@character.description.split("\n"),tag(:br))%><br>
+          <% end %>
+
+          <br></br>
+            <div class="justify-content-end">
+              <% if @character.user == current_user %>
+              <%= "こちらのキャラクターを追加" %>
+              <%= link_to "キャラクター一覧へ", group_characters_path, class:"btn btn-primary" %>
+                <%#= link_to "削除", @character, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger destroy_character_#{@character.id}"%>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

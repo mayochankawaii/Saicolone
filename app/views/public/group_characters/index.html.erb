@@ -1,2 +1,27 @@
-<h1>Public::GroupCharacters#index</h1>
-<p>Find me in app/views/public/group_characters/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="d-flex justify-content-between">
+      <h4>グループに紐づけるキャラクターを選択してください</h4>
+      </div>
+      <div class="row">
+        <% @characters.each do |character| %>
+          <div class="col-md-3">
+            <div class="card">
+              <%= link_to group_group_character_path(character), class: "card-link" do %>
+              <div style="max-width: 100%; max-height: 180px; overflow: hidden; position: relative;">
+                <%#= image_tag character.image, class: "card-img-top", style: "max-width: 100%; flex-shrink:0;" %>
+                <%= image_tag character.image, class: "card-img-top" %>
+              </div>
+              <div class="card-body">
+                <h6 class="card-title"><%= character.name %></h6>
+                <p class="card-text"><%= Genre.find(character.genre_id).name %></p>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

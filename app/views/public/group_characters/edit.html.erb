@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h4>キャラクター編集</h4>
+      <%= form_with model:@character, local: true do |f| %>
+        <%= render "public/shared/error_messages", resource: f.object %>
+        <div>
+          <%= f.label :image, 'キャラクター画像' %>
+          <%= f.file_field :image %>
+          <%= f.label :genre, 'ジャンル' %>
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: true %>
+        </div>
+        <div>
+          <%= f.label :name, 'キャラクター名' %>
+          <%= f.text_field :name, autofocus: true, class: "form-control text-input", style: "width:40%" %>
+        </div>
+        <div>
+          <%= f.label :status, 'ステータス' %>
+          <%= f.text_area :status, rows:'8', class: "form-control text-input" %>
+        </div>
+        <div>
+          <%= f.label :description, 'キャラクター説明' %>
+          <%= f.text_area :description, rows:'8', class: "form-control text-input" %>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <% if @character.user == current_user %>
+          <div>
+            <%#= f.submit '変更を保存', class:"btn btn-success" %>
+            <%= form_for @character do |f| %>
+              <%= f.submit '変更を保存', class: "btn btn-success", formaction: group_character_path(@character) %>
+            <% end %>
+            <%= link_to "キャンセル", group_character_path, class: "btn btn-primary" %>
+          </div>
+          <div>
+            <%#= link_to "削除する", @character, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_character_#{@character.id}"%>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
