@@ -39,16 +39,19 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'homes#top'
-    resources :posts, only: [:index, :destroy]
-    resources :groups, only: [:show, :index, :destroy]
-    resources :genres, only: [:index, :create, :edit, :update]
     resources :users, only: [:index, :show, :edit, :update]
+    # resources :groups, only: [:show, :index, :destroy]
+    resources :groups, only: [:index, :show, :destroy] do
+      resource :group_user, only: [:destroy]
+      # resource :group_character, except: [:new, :show, :edit]
+      resources :messages, only: [:destroy]
+    end
+    resources :characters, only: [:index, :show, :destroy]
+    resources :genres, only: [:index, :create, :edit, :update]
     get "/search", to: "searches#search"
   end
 
   devise_scope :admin do
     get '/admin/sign_out', to: 'admin/sessions#destroy'
   end
-
-  mount ActionCable.server => '/cable'
 end

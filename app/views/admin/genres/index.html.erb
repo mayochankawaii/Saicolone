@@ -12,21 +12,21 @@
       <table class="table">
         <thead>
           <tr>
-            <th></th>
             <th>ジャンル</th>
+            <th></th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           <% @genres.each do |genre| %>
             <tr>
-              <td></td>
-              <td><%= genre.name %></td>
-              <td>
-                <%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %>
-              </td>
-            </tr>
-          <% end %>
+            <td><%= genre.name %></td>
+            <td></td>
+            <td style="text-align-last:right">
+              <%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-primary" %>
+            </td>
+          </tr>
+        <% end %>
         </tbody>
       </table>
     </div>
