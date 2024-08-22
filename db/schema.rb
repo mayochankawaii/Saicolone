@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2024_08_16_075434) do
 
   create_table "group_characters", force: :cascade do |t|
     t.integer "character_id"
-    t.integer "genre_id"
+    t.integer "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
