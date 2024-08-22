@@ -1,0 +1,19 @@
+<hr>
+<% group.messages.each do |message| %>
+  <div class="container">
+
+  <div class="d-flex justify-content-between">
+    <div class=" justify-content-start">
+      <span><b><%= message.user.name %></b></span>&nbsp;&nbsp;<small><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></small>&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+      <%= link_to admin_group_message_path(message.group_id, message.id), method: :delete, remote: true do %>
+        <div class="text-right">
+          <button class="btn btn-outline-secondary" style="padding:0rem 0.4rem 0.2rem 0.5rem; border-radius: 20vh;">×</button>
+        </div>
+      <% end %>
+  </div>
+    <!-- メッセージの表示 -->
+    <p><%= message.content %></p>
+  </div>
+
+<% end %>

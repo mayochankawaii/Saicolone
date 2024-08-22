@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <div class="d-flex justify-content-between">
+        <div class="d-flex" style="margin-top: 4px;">
+          <h4><%= @group.title %></h4>
+          <p style="margin: 4px 0px 0px 40px;" >オーナー：<%= @group.owner.name %></p>
+        </div>
+        <%= link_to admin_groups_path, class: "btn btn-flat" do %>
+          <span>一覧に戻る</span>
+        <% end %>
+      </div>
+
+        <div class="row">
+          <div class="col-md">
+
+            <div class="py-4">
+              <p><strong>説明</strong></p>
+              <p><%= @group.description %></p>
+
+                <%= link_to 'グループを削除', admin_group_path(@group), method: :delete, data: { confirm: '本当に削除しますか?' },class: "btn btn-sm btn-danger" %>
+
+            </div>
+
+          <div class="py-4">
+            <h5>ユーザー</h5>
+            <div class="group-members">
+              <% @group.group_users.each do |member| %>
+                <p><%= member.user.name %></p>
+              <% end %>
+            </div>
+          </div>
+
+          <div id="message_count">
+            <%= render 'admin/messages/count', messages: @messages %>
+          </div>
+          <div id="message_index">
+            <%= render 'admin/messages/index', group: @group, message: @message %>
+          </div>
+          
+          <br>
+          <br>
+          <br>
+          <br>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

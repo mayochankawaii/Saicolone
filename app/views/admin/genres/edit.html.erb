@@ -4,11 +4,12 @@
       <h4>ジャンル編集</h4>
       <br>
         <%= form_with(model: [:admin, @genre]) do |f| %>
-          <div>
-            ジャンル名　　<%= f.text_field :name %>
-              <%= f.submit '変更を保存', class: "btn btn-success" %>
-            <% end %>
-          </div>
+        <div class="d-flex">
+          ジャンル名　　<%= f.text_field :name, autofocus: true, class: "form-control text-input", style: "width:40%" %>
+          <%= f.submit '変更を保存', class: "btn btn-success" %>
+          <%= link_to "戻る", admin_genres_path, class: "btn btn-primary" %>
+        </div>
+        <% end %>
     </div>
   </div>
 </div>

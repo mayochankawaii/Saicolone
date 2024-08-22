@@ -1,0 +1,2 @@
+$('#message_index').html('<%= j(render "admin/messages/index", group: @message.group) %>');
+$('#message_count').html('<%= j(render "admin/messages/count", messages: @group.messages) %>');
