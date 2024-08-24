@@ -14,19 +14,19 @@
         <div class="col-md-6">
           <table class="table">
             <tr>
-              <td>登録ユーザー</td>
+              <td width="140">登録ユーザー</td>
               <td><%= @character.user.name %></td>
             </tr>
             <tr>
-              <td>キャラクター名</td>
+              <td width="140">キャラクター名</td>
               <td><%= @character.name %></td>
             </tr>
             <tr>
-              <td>ジャンル</td>
+              <td width="140">ジャンル</td>
               <td><%= Genre.find(@character.genre_id).name %></td>
             </tr>
             <tr>
-              <td>ステータス</td>
+              <td width="140">ステータス</td>
               <td><%= @character.status %></td>
             </tr>
           </table>
