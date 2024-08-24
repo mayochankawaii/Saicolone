@@ -1,23 +1,19 @@
 <hr>
 <%#= render "public/shared/error_messages", resource: f.object %>
 <% group.messages.each do |message| %>
-  <div class="container">
-
-  <div class="d-flex justify-content-between">
-    <div class=" justify-content-start">
-      <span><b><%= message.user.name %></b></span>&nbsp;&nbsp;<small><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></small>&nbsp;&nbsp;&nbsp;&nbsp;
-    </div>
-    <% if message.user == current_user %>
-      <%= link_to group_message_path(message.group_id, message.id), method: :delete, remote: true do %>
-        <div class="text-right">
-          <button class="btn btn-outline-secondary" style="padding:0rem 0.4rem 0.2rem 0.5rem; border-radius: 20vh;">×</button>
-          <!--<button class="btn btn-outline-secondary" style="padding:0rem 0.4rem 0.2rem 0.5rem; border-radius: 20vh;" data-confirm="メッセージを削除しますか？">×</button>-->
-        </div>
-      <% end %>
+<div class="d-flex justify-content-between">
+  <div class=" justify-content-start">
+    <span><b><%= message.user.name %></b></span>&nbsp;&nbsp;<small><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></small>&nbsp;&nbsp;&nbsp;&nbsp;
+  </div>
+  <% if message.user == current_user %>
+    <%= link_to group_message_path(message.group_id, message.id), method: :delete, remote: true do %>
+      <div class="text-right">
+        <button class="btn btn-outline-secondary" style="padding:0rem 0.4rem 0.2rem 0.5rem; border-radius: 20vh;">×</button>
+        <!--<button class="btn btn-outline-secondary" style="padding:0rem 0.4rem 0.2rem 0.5rem; border-radius: 20vh;" data-confirm="メッセージを削除しますか？">×</button>-->
+      </div>
     <% end %>
-  </div>
-    <!-- メッセージの表示 -->
-    <p><%= safe_join(message.content.split("\n"),tag(:br))%></p>
-  </div>
-
+  <% end %>
+</div>
+  <!-- メッセージの表示 -->
+  <p><%= safe_join(message.content.split("\n"),tag(:br))%></p>
 <% end %>

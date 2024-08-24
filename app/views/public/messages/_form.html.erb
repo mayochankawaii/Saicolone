@@ -1,15 +1,14 @@
-<div class="container">
-  <div class="input-area">
-    <%= form_with model: [group, message], local: false do |f| %>
-      <div class="input-frame disp-flex">
-        <div class="input-chat-text-area">
-          <%#= f.text_area :content, placeholder: "メッセージを入力", class: "input-chat-text" %>
-          <%= f.text_area :content, placeholder: "メッセージを入力", class: 'form-control' %>
-        </div>
-        <div class="chat-submit-btn-area">
-          <%= f.submit "送信", class: 'chat-send-btn' %>
+<div class="input-area">
+  <%= form_with model: [group, message], local: false do |f| %>
+    <div class="input-frame disp-flex">
+      <div class="input-chat-text-area">
+        <div class="form-label">
+          <%= f.text_area :content, placeholder: "メッセージを入力", class: "form-control", style: "width:90%", rows:"2" %>
         </div>
       </div>
-    <% end %>
-  </div>
+      <div class="chat-submit-btn-area">
+        <%= f.submit "送信", class: 'chat-send-btn' %>
+      </div>
+    </div>
+  <% end %>
 </div>

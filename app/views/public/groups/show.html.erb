@@ -1,44 +1,38 @@
-<div class="container" style="margin-left: 0px;margin-right: 0px;">
-  <div class="row">
-    <div class="col-md-3">
-      <%= render 'public/group_users/index', group: @group %>
-      <%= render 'public/group_characters/index', group: @group, characters: @characters, character_lists: @character_lists %>
-      <%= render 'public/group_users/check', group: @group %>
-    </div>
-
-    <div class="col-md-9">
-      <div class="d-flex justify-content-between">
-        <div class="d-flex" style="margin-top: 4px;">
-          <h4><%= @group.title %></h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md">
-
-          <div class="py-4">
-            <p><strong>説明</strong></p>
-            <p><%= @group.description %></p>
-          </div>
-
-          <% if user_signed_in? %>
-            <% if @group.group_users.exists?(user_id: current_user.id) %>
-            <div id="message_count">
-              <%= render 'public/messages/count', messages: @messages %>
-            </div>
-            <div id="message_index">
-              <%= render 'public/messages/index', group: @group, message: @message %>
-            </div>
-              <%= render 'public/messages/form', group: @group, message: @message %>
-            <% end %>
-          <% end %>
-          <br>
-          <br>
-          <br>
-          <br>
-
-        </div>
-      </div>
-    </div>
-
+<div class="sidebars">
+  <div class="sidebar is-closed">
+    <button class="sidebar-toggle is-closed"><i class="fa fa-plus icon"></i></button>
+    <%= render 'public/group_users/index', group: @group %>
+    <%= render 'public/group_characters/index', group: @group, characters: @characters, character_lists: @character_lists %>
+    <%= render 'public/group_users/check', group: @group %>
   </div>
+</div>
+
+<div class="messages">
+  <div class="d-flex justify-content-between">
+    <div class="d-flex" style="margin-top: 4px;">
+      <h4><%= @group.title %></h4>
+    </div>
+  </div>
+
+  <div class="py-4">
+    <p><strong>説明</strong></p>
+    <p><%= @group.description %></p>
+  </div>
+
+  <% if user_signed_in? %>
+    <% if @group.group_users.exists?(user_id: current_user.id) %>
+    <div id="message_count">
+      <%= render 'public/messages/count', messages: @messages %>
+    </div>
+    <div id="message_index">
+      <%= render 'public/messages/index', group: @group, message: @message %>
+    </div>
+      <%= render 'public/messages/form', group: @group, message: @message %>
+    <% end %>
+  <% end %>
+  <br>
+  <br>
+  <br>
+  <br>
+
 </div>
