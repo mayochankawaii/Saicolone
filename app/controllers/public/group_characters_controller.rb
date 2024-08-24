@@ -1,5 +1,6 @@
 class Public::GroupCharactersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :owner?, only: [:index, :show, :edit]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
@@ -11,7 +12,6 @@ class Public::GroupCharactersController < ApplicationController
   def create
     group = Group.find(params[:group_id])
     character = Character.find(params[:character_id])
-    # user = current_user
     group_character = GroupCharacter.new
     group_character.character_id = character.id
     group_character.group_id = group.id
@@ -21,14 +21,28 @@ class Public::GroupCharactersController < ApplicationController
 
   def show
     @character = Character.find(params[:id])
-    @group = Group.find(params[:id])
+    @group = Group.find(params[:group_id])
+  end
+
+  def edit
+    @character = Character.find(params[:id])
+  end
+
+  def update
+    @character = Character.find(params[:id])
+    if @character.update(character_params)
+      redirect_to group_group_character_path(@character), notice: 'ステータスを更新しました。'
+    else
+      render :edit
+    end
   end
 
   def destroy
     group = Group.find(params[:group_id])
-    user = current_user
-    group.users.delete(user)
-    redirect_to groups_path
+    character = Character.find(params[:id])
+    group_character = GroupCharacter.find_by(group: group, character: character)
+    group_character.destroy
+    redirect_to group_path(group.id)
   end
 
   private
@@ -42,5 +56,8 @@ class Public::GroupCharactersController < ApplicationController
     unless @character.user == current_user
       redirect_to group_characters_path
     end
+  end
+
+  def owner?
   end
 end

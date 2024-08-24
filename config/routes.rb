@@ -20,6 +20,9 @@ Rails.application.routes.draw do
       resource :group_user, only: [:create, :destroy]
       resources :group_characters
       resources :messages, only: [:create, :destroy]
+      collection do
+        get 'play_character/:id', action: :play_character, as: 'play_character_with_id'
+      end
     end
     mount ActionCable.server => '/cable'
     resources :characters

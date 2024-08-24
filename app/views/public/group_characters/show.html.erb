@@ -36,9 +36,8 @@
           <br></br>
             <div class="justify-content-end">
               <% if @character.user == current_user %>
-              <%= "こちらのキャラクターを追加" %>
-              <%= link_to "キャラクター一覧へ", group_characters_path, class:"btn btn-primary" %>
-                <%#= link_to "削除", @character, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger destroy_character_#{@character.id}"%>
+              <%= link_to "グループから外す", group_group_character_path(@group, @character), method: :delete, data: { confirm: 'このキャラクターをグループから外しますか？' }, class: "btn btn-danger destroy_character_#{@character.id}"%>
+              <%#= link_to "キャラクター編集", edit_group_group_character_path, class:"btn btn-primary" %>
               <% end %>
             </div>
           </div>

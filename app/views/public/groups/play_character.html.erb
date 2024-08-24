@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="d-flex justify-content-between">
+      <h4>参加キャラクター</h4>
+
+        <% @character_lists.each do |character| %>
+          <% group_ids = character.groups.pluck(:id) %>
+          <% if group_ids.include?(@group) %>
+            <%= render 'public/group_characters/card', group: @group, character: @character %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
