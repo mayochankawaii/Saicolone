@@ -47,7 +47,6 @@ class Public::GroupsController < ApplicationController
   end
 
   def destroy
-    # @group_character = current_user.group_characters.find(params[:id])
     @group_character.destroy
     group = Group.find(params[:id])
     group.destroy

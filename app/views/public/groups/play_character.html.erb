@@ -2,15 +2,53 @@
   <div class="row">
     <div class="col-md-12">
       <div class="d-flex justify-content-between">
-      <h4>参加キャラクター</h4>
+        <h4>参加キャラクター</h4>
+        <%= link_to "グループに戻る", group_path(@group), class:"btn btn-primary" %>
+      </div><br></br>
+        <% if @character_lists.empty? %>
+          <p>キャラクターリストは空です。</p>
+        <% else %>
 
+        <div class="row">
         <% @character_lists.each do |character| %>
-          <% group_ids = character.groups.pluck(:id) %>
-          <% if group_ids.include?(@group) %>
-            <%= render 'public/group_characters/card', group: @group, character: @character %>
-          <% end %>
+          <div class="col-lg-6 col-12">
+            <!--<div class="col-md-4" style="max-width: 20%; overflow: hidden; position: relative;">-->
+            <div class="col-md-4 img-character">
+              <%= link_to group_group_character_path(@group, character) do %>
+                <%#= image_tag character.image, class: "img-fluid", style: "width: 100%; object-fit: cover; object-position: center;" %>
+                <%= image_tag character.image, class: "img-fluid character-img-index" %>
+              <% end %>
+            </div>
+            <div class="col-md-12" style="margin-bottom: 40px;">
+              <table class="table">
+                <tr>
+                  <td  width="140">登録ユーザー</td>
+                  <td><%= character.user.name %></td>
+                </tr>
+                <tr>
+                  <td  width="140">キャラクター名</td>
+                  <td><%= character.name %></td>
+                </tr>
+                <tr>
+                  <td  width="140">ステータス</td>
+                  <td><%= character.status %></td>
+                </tr>
+              </table>
+
+              <div style="padding: 0.75rem;">
+              <% if character.description.present? %>
+                キャラクター説明<br><br>
+                <%= safe_join(character.description.split("\n"),tag(:br))%><br>
+              <% end %>
+              </div>
+
+            </div>
+          </div>
+        <% end %><br></br>
+        </div>
+
         <% end %>
-      </div>
+        </div>
     </div>
   </div>
 </div>
