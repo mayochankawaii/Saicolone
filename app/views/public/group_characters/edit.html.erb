@@ -28,12 +28,9 @@
           <div>
             <%#= f.submit '変更を保存', class:"btn btn-success" %>
             <%= form_for @character do |f| %>
-              <%= f.submit '変更を保存', class: "btn btn-success", formaction: group_character_path(@character) %>
+              <%= f.submit '変更を保存', class: "btn btn-success", formaction: group_group_character_path %>
             <% end %>
-            <%= link_to "キャンセル", group_character_path, class: "btn btn-primary" %>
-          </div>
-          <div>
-            <%#= link_to "削除する", @character, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_character_#{@character.id}"%>
+            <%= link_to "キャンセル", group_group_character_path, class: "btn btn-primary" %>
           </div>
           <% end %>
         </div>

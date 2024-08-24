@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-3">
       <%= render 'public/group_users/index', group: @group %>
-      <%= render 'public/group_characters/index', group: @group %>
+      <%= render 'public/group_characters/index', group: @group, characters: @characters, character_lists: @character_lists %>
       <%= render 'public/group_users/check', group: @group %>
     </div>
 

@@ -2,17 +2,27 @@
   <% if group.owner == current_user %>
     <div class="d-flex justify-content-between">
       <h5>キャラクター</h5>
-      <%= link_to "一覧", group_group_characters_path(group.id) %> <!--追加されたキャラクターを一覧で確認する-->
+      <%= link_to "一覧で確認", play_character_with_id_groups_path(group) %>
     </div>
-    追加されたキャラクターをすべて表示
+    <% character_lists.each do |character| %>
+      <% group_ids = character.groups.pluck(:id) %>
+      <% if group_ids.include?(group.id) %>
+        <%= render 'public/group_characters/card', group: group, character: character %>
+      <% end %>
+    <% end %>
 
   <% elsif group.group_users.exists?(user_id: current_user.id) %>
     <div class="d-flex justify-content-between">
       <h5>キャラクター</h5>
       <%= link_to "追加", group_group_characters_path(group.id) %>
     </div>
-    追加されたキャラクターを表示
-    削除する
+    <% characters.each do |character| %>
+    <% group_ids = character.groups.pluck(:id) %>
+
+      <% if group_ids.include?(group.id) %>
+        <%= render 'public/group_characters/card', group: group, character: character %>
+      <% end %>
+    <% end %>
   <% end %>
 <% end %>
 <br></br>

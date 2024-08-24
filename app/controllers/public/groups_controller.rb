@@ -5,14 +5,15 @@ class Public::GroupsController < ApplicationController
   def index
     @groups = Group.all
     @group_lists = Group.all.order(:id)
-    # @group_joining = GroupUser.where(user_id: current_user.id)
-    # @group_lists_none = "You don't join any groups."
   end
 
   def show
+    # @character = Character.find(params[:id])
     @group = Group.find(params[:id])
     @messages = @group.messages#.order(created_at: :desc)
     @message = Message.new
+    @characters = current_user.characters
+    @character_lists = @group.characters
   end
 
   def new
@@ -46,11 +47,18 @@ class Public::GroupsController < ApplicationController
   end
 
   def destroy
-    @group_character = current_customer.group_characters.find(params[:id])
+    # @group_character = current_user.group_characters.find(params[:id])
     @group_character.destroy
     group = Group.find(params[:id])
     group.destroy
     redirect_to groups_path
+  end
+
+  def play_character
+    @group = Group.find(params[:id])
+    @characters = current_user.characters
+    @character_lists = @group.characters
+    render "play_character"
   end
 
   private
