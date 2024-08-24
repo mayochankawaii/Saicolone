@@ -18,11 +18,11 @@ a:visited{
 }
 /* カーソルを合わせたとき */
 a:hover{
-	color: #0E46A3;
+	color: #950101;
 }
 /* 選択中のリンク */
 a:active{
-	color: #0E46A3;
+	color: #950101;
 }
 
 body {
@@ -54,7 +54,7 @@ body {
 }
 
 .footer {
-  background-color: #9AC8CD;
+  background-color: #FF0000;
   display: flex;
 }
 
@@ -70,7 +70,7 @@ body {
   padding:0 15px;
   border-radius:4px 0 0 4px;
   background: transparent;/*背景カラー透明*/
-  border:2px solid #0E46A3;/*枠線の指定*/
+  border:2px solid #950101;/*枠線の指定*/
   border-right: none;/*枠線の右側だけ削除*/
   outline:0;
 }
@@ -78,19 +78,95 @@ body {
 .sbtn2{
   width:50px;
   border-radius:0 4px 4px 0;
-  background:#0E46A3;
+  background:#950101;
   border:none;
   color:#fff;
   font-size:18px;
   cursor: pointer;
 }
 .sbtn2:hover{
-  background: #9AC8CD;
+  background: #FF0000;
 }
 
 
 .form-group {
   margin-top: 1.1rem;
+}
+
+
+// 企業説明
+.main-visual-content {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  color: #fff;
+  text-align: center; /* 文字を中央揃えにする */
+  padding-top: 40px;
+  overflow: hidden;
+}
+
+.main-visual-content:after {
+  position: absolute;
+  content: '';
+  top:0;
+  left: 0;
+  background: #000000; /* 背景色を変更 */
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transform: translateX(-100%);
+  animation-name: main-visual-content_slide;
+  animation-duration:.5s;
+  animation-fill-mode: forwards;
+}
+@keyframes main-visual-content_slide {
+  0% {
+    transform: translate(-100%,0);
+    background: #fff; /* 初期の背景色を設定 */
+  }
+  100% {
+    transform: translate(0,0);
+    background: #000000; /* 最終的な背景色を設定 */
+  }
+}
+
+.sub-visual-content {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  color: #000000;
+  text-align: center; /* 文字を中央揃えにする */
+  padding-top: 40px;
+  overflow: hidden;
+}
+
+.sub-visual-content:after {
+  position: absolute;
+  content: '';
+  top:0;
+  left: 0;
+  background: #fff; /* 背景色を変更 */
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transform: translateX(100%);
+  animation-name: sub-visual-content_slide;
+  animation-duration:.5s;
+  animation-fill-mode: forwards;
+}
+@keyframes sub-visual-content_slide {
+  0% {
+    transform: translate(100%, 0);
+    background: #000000; /* 初期の背景色を設定 */
+  }
+  100% {
+    transform: translate(0, 0);
+    background: #fff; /* 最終的な背景色を設定 */
+  }
+}
+
+.sub-visual-name {
+  margin-top: 30px; /* 上側の外側の余白 */
 }
 
 
@@ -217,7 +293,7 @@ button.btn {
   transition: all .5s ease-in-out;
   -webkit-transform: translateX(-96%);
   transform: translateX(-96%);
-  background: #9AC8CD;
+  background: #FF0000;
 }
 
 .btn-flat:hover:before {
@@ -300,6 +376,19 @@ button.btn {
   margin-bottom: 10px;
 }
 
+.card-img-character {
+  max-width: 100%;
+  max-height: 180px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-img-index {
+  height: 200px;
+  width: 100%;
+  object-fit: contain;
+}
+
 
 /* 画面サイズ設定 */
 @media(max-width: 768px) {  // mdサイズ以下の場合に適用
@@ -309,7 +398,23 @@ button.btn {
   .col-6 {
     max-width: 100%;
   }
+
+  .card-img-index {
+  height: 300px;
+  width: 100%;
+  object-fit: blok;
+  }
+
+  .card-img-character {
+  max-height: 300px;
+  }
+
+  .card {
+  margin-bottom: 40px;
+  }
+
 }
+
 
 table{
   width: 100%;

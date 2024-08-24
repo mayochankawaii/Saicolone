@@ -2,7 +2,7 @@
   <% if group.owner == current_user %>
     <div class="d-flex justify-content-between">
       <h5>キャラクター</h5>
-      <%= link_to "一覧で確認", play_character_with_id_groups_path(group) %>
+      <%#= link_to "一覧で確認", play_character_with_id_groups_path(group) %>
     </div>
     <% character_lists.each do |character| %>
       <% group_ids = character.groups.pluck(:id) %>

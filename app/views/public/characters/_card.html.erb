@@ -1,8 +1,8 @@
 <div class="card">
   <%= link_to character_path(character), class: "card-link" do %>
-  <div style="max-width: 100%; max-height: 180px; overflow: hidden; position: relative;">
+  <div class="card-img-character">
     <%#= image_tag character.image, class: "card-img-top", style: "max-width: 100%; flex-shrink:0;" %>
-    <%= image_tag character.image, class: "card-img-top" %>
+    <%= image_tag character.image, class: "card-img-index card-img-top" %>
   </div>
   <div class="card-body">
     <h6 class="card-title"><%= character.name %></h6>
