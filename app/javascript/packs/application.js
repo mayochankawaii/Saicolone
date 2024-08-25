@@ -20,4 +20,3 @@ ActiveStorage.start()
 require('jquery');
 
 import "./btn"
-import "./sidebar.js"

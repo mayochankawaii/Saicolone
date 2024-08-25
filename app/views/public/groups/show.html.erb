@@ -1,5 +1,5 @@
 <div class="sidebars">
-  <div class="sidebar is-closed" style="padding: 1rem;">
+  <div class="sidebar is-closed" style="padding: 1rem; height: vh-100%;">
     <button class="sidebar-toggle is-closed"><i class="fa fa-plus icon"></i></button>
     <%= render 'public/group_users/index', group: @group %>
     <%= render 'public/group_characters/index', group: @group, characters: @characters, character_lists: @character_lists %>
@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<div class="messages">
+<div class="messages" style="padding-right: 1rem; padding-left: 1rem;">
   <div class="d-flex justify-content-between">
     <div class="d-flex" style="margin-top: 4px;">
       <h4><%= @group.title %></h4>
@@ -36,3 +36,14 @@
   <br>
 
 </div>
+
+<script>
+
+  var toggleBtn = document.querySelector('.sidebar-toggle');
+  var sidebar = document.querySelector('.sidebar');
+
+  toggleBtn.addEventListener('click', function() {
+    toggleBtn.classList.toggle('is-closed');
+    sidebar.classList.toggle('is-closed');
+  });
+</script>
