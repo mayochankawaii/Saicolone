@@ -10,7 +10,7 @@
             <div class="card">
               <%= link_to group_group_characters_path(@group, character_id: character.id), {method: "post"}, class: "card-link" do %>
               <div class="card-img-character">
-                <%= image_tag character.image, class: "card-img-index card-img-top" %>
+                <%= image_tag character.get_image, class: "card-img-index card-img-top" %>
               </div>
               <div class="card-body">
                 <h6 class="card-title"><%= character.name %></h6>

@@ -10,12 +10,16 @@
           <%= render "public/shared/error_messages", resource: f.object %>
             <table class="table">
               <tr>
+                <td>アイコン</td>
+                <td><%= f.file_field :image %></td>
+              </tr>
+              <tr>
                 <th>ユーザー名</th>
                 <td><%= f.text_field :name, autofocus: true, class: "form-control text-input", style: "width:40%" %></td>
               </tr>
               <tr>
                 <th>メールアドレス</th>
-                <td><%= f.text_field :email %></td>
+                <td><%= f.text_field :email, autofocus: true, class: "form-control text-input", style: "width:40%" %></td>
               </tr>
             </table>
 

@@ -1,8 +1,8 @@
 <% if user_signed_in? %>
   <% if group.owner == current_user %>
-    <div class="d-flex justify-content-between">
-      <h5>キャラクター</h5>
-      <%= link_to "追加", group_group_characters_path(group.id) %>
+    <div class="d-flex justify-content-start">
+      <h5>キャラクター</h5>&nbsp;&nbsp;
+      <%= link_to "追加", group_group_characters_path(group.id) %>&nbsp;&nbsp;
       <%= link_to "一覧", play_character_with_id_groups_path(group) %>
     </div>
     <% character_lists.each do |character| %>
@@ -13,8 +13,8 @@
     <% end %>
 
   <% elsif group.group_users.exists?(user_id: current_user.id) %>
-    <div class="d-flex justify-content-between">
-      <h5>キャラクター</h5>
+    <div class="d-flex justify-content-start">
+      <h5>キャラクター</h5>&nbsp;&nbsp;
       <%= link_to "追加", group_group_characters_path(group.id) %>
     </div>
     <% characters.each do |character| %>

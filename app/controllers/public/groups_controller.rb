@@ -8,9 +8,8 @@ class Public::GroupsController < ApplicationController
   end
 
   def show
-    # @character = Character.find(params[:id])
     @group = Group.find(params[:id])
-    @messages = @group.messages#.order(created_at: :desc)
+    @messages = @group.messages
     @message = Message.new
     @characters = current_user.characters
     @character_lists = @group.characters

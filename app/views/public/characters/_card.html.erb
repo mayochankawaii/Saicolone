@@ -1,7 +1,7 @@
 <div class="card">
   <%= link_to character_path(character), class: "card-link" do %>
   <div class="card-img-character">
-    <%= image_tag character.image, class: "card-img-index card-img-top" %>
+    <%= image_tag character.get_image, class: "card-img-index card-img-top" %>
   </div>
   <div class="card-body">
     <h6 class="card-title"><%= character.name %></h6>

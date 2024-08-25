@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :groups, through: :group_users
   has_many :messages, dependent: :destroy
 
+  has_one_attached :image
+
   def user_status
     if is_deleted == true
       "退会"
@@ -22,4 +24,8 @@ class User < ApplicationRecord
   end
 
   validates :name, presence: true
+
+  def get_image
+    (image.attached?) ? image : 'no_image.jpg'
+  end
 end

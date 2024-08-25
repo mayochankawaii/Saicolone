@@ -15,9 +15,3 @@ document.addEventListener('DOMContentLoaded', function() {
     sidebar.classList.toggle('is-closed');
   });
 });
-
-/*global $*/
-// $(".sidebar-toggle").click(function () {
-//     $(this).toggleClass('active');
-//     $(".sidebar").fadeOut();
-// });
