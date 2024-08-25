@@ -3,8 +3,7 @@
 <table class="table table-bordered">
   <tr class="table-active">
     <!--タグの中にbrタグを入れることで空白のセルを作れる-->
-    <th>タイトル</th>
-    <th><br></th>
+    <th colspan="2">タイトル</th>
   </tr>
     <% if @groups.present? %>
     <% @groups.each do |group| %>

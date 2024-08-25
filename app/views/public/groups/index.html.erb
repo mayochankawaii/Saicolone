@@ -11,28 +11,25 @@
         <% end %>
       </div>
 <br></br>
-    <table class="table table-bordered">
-      <tr class="table-active">
-        <ul class="group-list">
-        <th>タイトル</th>
-        <th><br></th>
-      </tr>
+      <table class="table table-bordered">
+        <tr class="table-active">
+          <th colspan="2">タイトル</th> <!-- タイトル列を2列にするためにcolspan="2"を追加 -->
+        </tr>
 
         <% @groups.each do |group| %>
-        <td>
-          <div class="group-item">
-            <%= link_to group.title, group_path(group.id), class: "group-link" %>
-          </div>
-        </td>
-        <td width="100">
-          <% if group.owner == current_user %>
-            オーナー
-            <%#= link_to "削除", @group, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_group_#{@group.id}"%>
-          <% end %>
-        </td>
+          <tr>
+            <td>
+              <%= link_to group.title, group_path(group.id), class: "group-link" %>
+            </td>
+            <td width="100">
+              <% if group.owner == current_user %>
+                オーナー
+                <%#= link_to "削除", @group, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_group_#{@group.id}"%>
+              <% end %>
+            </td>
+          </tr>
         <% end %>
-        </ul>
-    </table>
+      </table>
 
     </div>
   </div>
