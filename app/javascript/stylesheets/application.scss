@@ -58,6 +58,10 @@ body {
   display: flex;
 }
 
+.in-link {
+  margin-top: 1rem;
+}
+
 /*フォーム全体を中央へ*/
 .form1{
   display: flex;
@@ -422,14 +426,13 @@ button.btn {
     object-fit: contain;
   }
 
-  .card {
-  margin-bottom: 40px;
-  }
-
   .abouta-visual {
   max-width: 0%;
   }
 
+  .full-screen-img {
+    height: 30rem;
+  }
 }
 
 @media screen and (min-width: 1400px) {
@@ -507,9 +510,12 @@ button.btn {
     transform: translateX(-19em);
     display: block;
   }
-  .full-screen-img {
-    height: 400px;
 }
+
+@media(max-width: 464px) {
+  .flex-disable {
+    display: initial !important;
+  }
 }
 
 table{

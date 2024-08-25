@@ -1,10 +1,10 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h2>ログイン</h2>
+<div class="d-flex justify-content-center align-items-center">
+  <div class="row" style="margin-top: 4rem;">
+
+    <div class="text-start">
+      <h2 class="text-center">ログイン</h2><br></br>
 
       <%= form_with model: @user, url: user_session_path do |f| %>
-
         <div class="field">
           <%= f.label :メールアドレス %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -22,14 +22,16 @@
           </div>
         <% end %>
 
-        <div class="actions">
-          <button class="btn btn-flat">
-            <span>ログイン</span>
-          </button>
-        </div>
-      <% end %>
+        <div class="d-flex justify-content-start">
+          <div class="actions">
+            <button class="btn btn-flat" style="margin-top: 1rem;">
+              <span>ログイン</span>
+            </button>
+          </div>
+        <% end %>
 
-      <%= render "public/shared/links" %>
+        <%= render "public/shared/links" %>
+      </div>
 
     </div>
   </div>

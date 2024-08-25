@@ -1,8 +1,8 @@
-<div class="container" style="display: grid;">
-  <div class="row">
-    <div class="col" style="margin: auto;">
+<div class="d-flex justify-content-center align-items-center">
+  <div class="row" style="margin-top: 4rem;">
 
-      <h2>新規登録</h2>
+    <div class="text-start">
+      <h2 class="text-center">新規登録</h2><br></br>
 
       <%= form_with model: @user, url: user_registration_path do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
@@ -32,14 +32,16 @@
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
 
-        <div class="actions">
-          <button class="btn btn-flat">
-            <span>登録</span>
-          </button>
-        </div>
-      <% end %>
+        <div class="d-flex justify-content-start">
+          <div class="actions">
+            <button class="btn btn-flat" style="margin-top: 1rem; margin-left: 0.5rem;">
+              <span>登録</span>
+            </button>
+          </div>
+        <% end %>
 
-      <%= render "public/shared/links" %>
+        <%= render "public/shared/links" %>
+      </div>
 
     </div>
   </div>

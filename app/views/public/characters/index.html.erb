@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between flex-disable">
       <h4>キャラクター一覧</h4>
       <%= link_to new_character_path, class: "btn btn-flat" do %>
         <span>キャラクター登録</span>
@@ -9,7 +9,7 @@
       </div><br></br>
       <div class="row">
         <% @characters.each do |character| %>
-          <div class="col-md-3">
+          <div class="col-md-3" style="padding-bottom: 2rem;">
             <%= render 'public/characters/card', character: character %>
           </div>
         <% end %>

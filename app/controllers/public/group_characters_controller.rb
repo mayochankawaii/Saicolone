@@ -53,8 +53,9 @@ class Public::GroupCharactersController < ApplicationController
 
   def ensure_correct_user
     @character = Character.find(params[:id])
-    unless @character.user == current_user
-      redirect_to group_characters_path
+    @group = Group.find(params[:group_id])
+    unless @character.user == current_user || @group.owner == current_user
+      redirect_to group_path(@group.id) # group_pathの引数も修正してください
     end
   end
 
