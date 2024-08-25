@@ -3,7 +3,7 @@ class Public::GroupsController < ApplicationController
   before_action :owner?, only: [:edit, :update, :destroy]
 
   def index
-    @groups = Group.all
+    @groups = current_user.groups
     @group_lists = Group.all.order(:id)
   end
 

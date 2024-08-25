@@ -3,37 +3,24 @@
 <table class="table table-bordered">
   <tr class="table-active">
     <!--タグの中にbrタグを入れることで空白のセルを作れる-->
-    <th><br></th>
-    <th>キャラクター名</th>
-    <th>ジャンル</th>
+    <th>タイトル</th>
     <th><br></th>
   </tr>
-    <% if @characters.present? %>
-    <% @characters.each do |character| %>
-      <tr>
-        <td width="125">
-          <div style="max-height: 280px; overflow: hidden;">
-            <%= link_to(character) do %>
-              <%= image_tag character.image, style: "object-fit: contain; width: 100px; height: 100px; object-position: center;" %>
-            <% end %>
-          </div>
-        </td>
+    <% if @groups.present? %>
+    <% @groups.each do |group| %>
         <td>
-          <%= link_to character.name,character %>
+          <%= link_to group.title,group %>
         </td>
         <td width="100">
-          <%= character.genre ? character.genre.name : 'ジャンルが設定されていません' %>
-        </td>
-        <td width="100">
-          <% if character.user == current_user %>
-          <%= link_to "編集する", edit_character_path(character), class:"btn btn-primary" %>
-            <%#= link_to "削除", @character, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_character_#{@character.id}"%>
+          <% if group.owner == current_user %>
+          <%= link_to "編集する", edit_group_path(group), class:"btn btn-primary" %>
+            <%#= link_to "削除", @group, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_group_#{@group.id}"%>
           <% end %>
         </td>
       </tr>
     <% end %>
     <% else %>
-      <p>キャラクターが見つかりませんでした。</p>
+      <p>グループが見つかりませんでした。</p>
     <% end %>
   </tr>
 </table>

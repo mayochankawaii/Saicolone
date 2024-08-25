@@ -9,4 +9,11 @@ class Group < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true
+
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "partial"
+      return Group.where("title LIKE ?", "%#{word}%")
+    end
+  end
 end

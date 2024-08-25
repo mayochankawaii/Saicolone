@@ -6,9 +6,9 @@
         <%= link_to "編集", edit_user_path(@user), class: "btn btn-primary" %>
       </div>
 
+    <div class="d-flex justify-content-start">
+      <%= image_tag @user.get_image, size: '100x100' %>
       <% if @user.profile.present? %>
-        <div class="d-flex justify-content-start">
-          <%= image_tag @user.get_image, size: '100x100' %>
           <h5 style="margin-top: 5rem; margin-left: 2rem;">プロフィール</h5>
         </div>
         <div class="p-2">
@@ -22,6 +22,8 @@
         </div>
       <% end %>
 
+    </div>
+
       <div class="wrapper pt-4">
         <%= link_to characters_path, class: "btn btn-flat" do %>
           <span>キャラクター一覧</span>
@@ -31,6 +33,5 @@
         <% end %>
       </div>
 
-    </div>
   </div>
 </div>

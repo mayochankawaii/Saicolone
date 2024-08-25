@@ -3,21 +3,36 @@
     <div class="col">
 
       <div class="d-flex justify-content-between">
-        <h4 class="group-list-title">グループ一覧</h4>
+        <h4 class="group-list-title">グループ一覧</h4><br></br>
         <% if user_signed_in? %>
           <%= link_to new_group_path, class: "btn btn-flat" do %>
             <span>グループを作成</span>
           <% end %>
         <% end %>
       </div>
+<br></br>
+    <table class="table table-bordered">
+      <tr class="table-active">
+        <ul class="group-list">
+        <th>タイトル</th>
+        <th><br></th>
+      </tr>
 
-      <ul class="group-list">
         <% @groups.each do |group| %>
-          <li class="group-item">
-            # <%= link_to group.title, group_path(group.id), class: "group-link" %>
-          </li>
+        <td>
+          <div class="group-item">
+            <%= link_to group.title, group_path(group.id), class: "group-link" %>
+          </div>
+        </td>
+        <td width="100">
+          <% if group.owner == current_user %>
+            オーナー
+            <%#= link_to "削除", @group, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_group_#{@group.id}"%>
+          <% end %>
+        </td>
         <% end %>
-      </ul>
+        </ul>
+    </table>
 
     </div>
   </div>

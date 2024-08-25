@@ -12,28 +12,31 @@
   </p>
 </div>
 
-<% if user_signed_in? %>
-<div class="d-flex justify-content-center">
-  <%= link_to new_character_path, class: "btn btn-flat" do %>
-    <span>キャラクターを登録</span>
-  <% end %>
-  <div style="padding-left: 20px">
-  <%= link_to groups_path, class: "btn btn-flat" do %>
-    <span>グループを見る</span>
-  <% end %>
-  </div>
-</div>
 
-<% else %>
-
-<div class="d-flex justify-content-center">
-  <%= link_to new_user_registration_path, class: "btn btn-flat" do %>
-    <span>新規登録はこちら</span>
-  <% end %>
-  <div style="padding-left: 20px">
-  <%= link_to new_user_session_path, class: "btn btn-flat" do %>
-    <span>ログインはこちら</span>
-  <% end %>
+<div class="illust" style="position: relative;"><%= image_tag asset_path('silhouette.png'), class: 'full-screen-img' %>
+  <% if user_signed_in? %>
+  <div class="d-flex justify-content-center" style="position: absolute; top: 3rem; left: 0; z-index: 2; width: 100%; text-align: center;">
+    <%= link_to new_character_path, class: "btn btn-flat" do %>
+      <span>キャラクターを登録</span>
+    <% end %>
+    <div style="padding-left: 20px">
+      <%= link_to groups_path, class: "btn btn-flat" do %>
+        <span>グループを見る</span>
+      <% end %>
+    </div>
   </div>
+
+  <% else %>
+
+  <div class="d-flex justify-content-center" style="position: absolute; top: 3rem; left: 0; z-index: 2; width: 100%; text-align: center;">
+    <%= link_to new_user_registration_path, class: "btn btn-flat" do %>
+      <span>新規登録はこちら</span>
+    <% end %>
+    <div style="padding-left: 20px">
+      <%= link_to new_user_session_path, class: "btn btn-flat" do %>
+        <span>ログインはこちら</span>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
 </div>
-<% end %>
