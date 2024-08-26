@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     end
     resources :groups do
       resource :permits, only: [:create, :destroy]
-      resource :group_user, only: [:create, :destroy]
+      resources :group_users, only: [:show, :create, :destroy]
       resources :group_characters
       resources :messages, only: [:create, :destroy]
       collection do

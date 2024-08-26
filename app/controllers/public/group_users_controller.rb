@@ -1,6 +1,11 @@
 class Public::GroupUsersController < ApplicationController
   before_action :authenticate_user!
 
+  def show
+    @user = User.find(params[:id])
+    @group = Group.find(params[:group_id])
+  end
+
   def create
     group = Group.find(params[:group_id])
     permit = Permit.find(params[:permit_id])

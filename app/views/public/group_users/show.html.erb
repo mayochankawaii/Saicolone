@@ -3,7 +3,7 @@
     <div class="col">
       <div class="d-flex justify-content-between">
         <h4 class="pt-2"><%= @user.name %> のマイページ</h4>
-        <%= link_to "編集", edit_user_path(@user), class: "btn btn-primary" %>
+        <%= link_to "グループに戻る", group_path(@group), class:"btn btn-primary" %>
       </div>
       <%= image_tag @user.get_image, size: '100x100', class: "icon-img" %>
 
@@ -24,16 +24,5 @@
       <% end %>
 
     </div>
-  </div>
-</div>
-
-<div class="container">
-  <div class="wrapper pt-4">
-    <%= link_to characters_path, class: "btn btn-flat" do %>
-      <span>キャラクター一覧</span>
-    <% end %>
-    <%= link_to groups_path, class: "btn btn-flat" do %>
-      <span>グループ一覧</span>
-    <% end %>
   </div>
 </div>

@@ -13,7 +13,7 @@
   </div>
   <div class="group-members">
     <% group.group_users.each do |member| %>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;<%= image_tag member.user.get_image, size:'40x40', class: "icon-img" %>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to group_group_user_path(group, member.user) do %><%= image_tag member.user.get_image, size:'40x40', class: "icon-img" %><% end %>
       <%= member.user.name %></p>
     <% end %>
   </div>
