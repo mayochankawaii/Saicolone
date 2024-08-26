@@ -16,6 +16,14 @@
   <body class="d-flex flex-column vh-100">
     <%= render 'layouts/header' %>
       <main class="mb-auto">
+        <% if flash[:notice] %>
+         <div class="alert alert-success" role="alert">
+         <p class="notice text-center" style="color:green; margin-bottom: 0px;"><%= flash[:notice] %></p></div>
+        <% end %>
+        <% if flash[:alert] %>
+         <div class="alert alert-danger" role="alert">
+         <p class="alert text-center" style="color:red; margin-bottom: 0px;"><%= flash[:alert] %></p></div>
+        <% end %>
         <%= yield %>
       </main>
     <%#= render 'layouts/footer' %>

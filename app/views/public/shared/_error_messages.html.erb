@@ -29,6 +29,14 @@
           <% if resource.errors.include?(:genre) %>
             <li>ジャンルを選択してください</li>
           <% end %>
+          <% elsif attribute == :title %>
+          <% if resource.errors.include?(:title) %>
+            <li>グループ名を入力してください</li>
+          <% end %>
+          <% elsif attribute == :description %>
+          <% if resource.errors.include?(:description) %>
+            <li>詳細を入力してください</li>
+          <% end %>
         <% else %>
           <li><%= message %></li>
         <% end %>

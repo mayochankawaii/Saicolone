@@ -7,16 +7,7 @@
         <div class="col-md">
 
           <%= form_with model: @group do |f| %>
-            <% if @group.errors.any? %>
-              <div id="error_explanation">
-                <h2><%= @group.errors.count %> つのエラーが発生しました。</h2>
-                <ul>
-                  <% @group.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
+            <%= render "public/shared/error_messages", resource: f.object %>
 
 
             <div class="form-group">

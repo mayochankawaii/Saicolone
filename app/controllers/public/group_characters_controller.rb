@@ -16,7 +16,7 @@ class Public::GroupCharactersController < ApplicationController
     group_character.character_id = character.id
     group_character.group_id = group.id
     group_character.save
-    redirect_to group_path(group.id)
+    redirect_to group_path(group.id), notice: 'キャラクターを追加しました！'
   end
 
   def show
@@ -31,7 +31,7 @@ class Public::GroupCharactersController < ApplicationController
   def update
     @character = Character.find(params[:id])
     if @character.update(character_params)
-      redirect_to group_group_character_path(@character), notice: 'ステータスを更新しました。'
+      redirect_to group_group_character_path(@character)
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class Public::GroupCharactersController < ApplicationController
     character = Character.find(params[:id])
     group_character = GroupCharacter.find_by(group: group, character: character)
     group_character.destroy
-    redirect_to group_path(group.id)
+    redirect_to group_path(group.id), alert: 'キャラクターをグループから外しました'
   end
 
   private

@@ -18,7 +18,7 @@ class Public::CharactersController < ApplicationController
     @character = Character.new(character_params)
     @character.user_id = current_user.id
     if @character.save
-      redirect_to character_path(@character), notice: '新規投稿が完了しました。'
+      redirect_to character_path(@character), notice: 'キャラクターを投稿しました'
     else
       render :new
     end
@@ -35,7 +35,7 @@ class Public::CharactersController < ApplicationController
   def update
     @character = Character.find(params[:id])
     if @character.update(character_params)
-      redirect_to character_path(@character), notice: 'ステータスを更新しました。'
+      redirect_to character_path(@character), notice: 'キャラクターを更新しました。'
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class Public::CharactersController < ApplicationController
   def destroy
     @character = Character.find(params[:id])
     @character.destroy
-    redirect_to characters_path
+    redirect_to characters_path, alert: 'キャラクターを削除しました'
   end
 
   private
