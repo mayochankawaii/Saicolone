@@ -18,7 +18,6 @@
                 <td><%= image_tag permit.user.get_image, size: '60x60', class: "icon-img" %></td>
                 <td><%= permit.user.name %></td>
                 <td class="text-right">
-                  <%#= link_to '加入許可', group_group_user_path(group_id: @group.id, user_id: permit.user_id), method: :post, class: "btn btn-sm btn-success" %>
                   <%= link_to '加入許可', group_group_user_path(@group, permit_id: permit.id), method: :post, class: "btn btn-sm btn-success" %>
                 </td>
               </tr>

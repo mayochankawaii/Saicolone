@@ -55,7 +55,7 @@ class Public::GroupCharactersController < ApplicationController
     @character = Character.find(params[:id])
     @group = Group.find(params[:group_id])
     unless @character.user == current_user || @group.owner == current_user
-      redirect_to group_path(@group.id) # group_pathの引数も修正してください
+      redirect_to group_path(@group.id)
     end
   end
 
