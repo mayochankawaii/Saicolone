@@ -19,6 +19,11 @@
             <% end %>
 
             <div class="form-group">
+              <%= f.label :image, 'グループ画像' %>
+              <%= f.file_field :image %>
+            <div>
+
+            <div class="form-group">
               <%= f.label :title, 'グループ名' %>
               <div>
                 <%= f.text_field :title, autofocus: true, class: "form-control text-input", style: "width:40%" %>

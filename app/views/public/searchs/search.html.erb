@@ -3,18 +3,25 @@
 <table class="table table-bordered">
   <tr class="table-active">
     <!--タグの中にbrタグを入れることで空白のセルを作れる-->
+    <th><br></th>
     <th colspan="2">タイトル</th>
+    <th>参加人数</th>
   </tr>
     <% if @groups.present? %>
     <% @groups.each do |group| %>
+        <td width="60">
+          <%= link_to group_path(group.id) do %>
+            <%= image_tag group.get_image, size: '60x60', class: "icon-img" %>
+          <% end %>
+        </td>
         <td>
-          <%= link_to group.title,group %>
+          <%= link_to group.title,group %><% if group.owner == current_user %>&nbsp;&nbsp;<i class="fa-regular fa-star"></i><% end %>
+        </td>
+        <td>
+          <%= group.description %>
         </td>
         <td width="100">
-          <% if group.owner == current_user %>
-          <%= link_to "編集する", edit_group_path(group), class:"btn btn-primary" %>
-            <%#= link_to "削除", @group, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_group_#{@group.id}"%>
-          <% end %>
+          <i class="fa-solid fa-users"></i><%= group.users.count %>
         </td>
       </tr>
     <% end %>

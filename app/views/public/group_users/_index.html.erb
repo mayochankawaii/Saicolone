@@ -4,11 +4,11 @@
       <span>グループ一覧</span>
     <% end %>
   </div><br>
-  <h5>オーナー：<%= group.owner.name %></h5><br>
-  <h5>ユーザー</h5>
+  <h5>&nbsp;<i class="fa-solid fa-user"></i>オーナー&nbsp;&nbsp;<%= group.owner.name %></h5><br>
+  <h5><i class="fa-solid fa-users"></i>ユーザー</h5>
   <div class="group-members">
     <% group.group_users.each do |member| %>
-      <p><%= member.user.name %></p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= member.user.name %></p>
     <% end %>
   </div>
 </div>

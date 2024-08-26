@@ -9,6 +9,11 @@ class Group < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true
+  has_one_attached :image
+
+  def get_image
+    (image.attached?) ? image : 'no_image.jpg'
+  end
 
   # 検索方法分岐
   def self.looks(search, word)
