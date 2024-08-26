@@ -3,7 +3,7 @@
 <% group.messages.each do |message| %>
 <div class="d-flex justify-content-between">
   <div class=" justify-content-start">
-    <%= image_tag message.user.get_image, size:'60x60' %>
+    <%= image_tag message.user.get_image, size:'60x60', class: "icon-img" %>
     <span><b><%= message.user.name %></b></span>&nbsp;&nbsp;<small><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></small>&nbsp;&nbsp;&nbsp;&nbsp;
   </div>
   <% if message.user == current_user %>

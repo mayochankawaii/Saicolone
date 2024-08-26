@@ -4,8 +4,10 @@
     <%= link_to "グループを削除", group_path(group.id), method: :delete, data: {confirm: "本当にグループを消しますか？"}, class:"btn btn-danger" %>
 
   <% elsif group.group_users.exists?(user_id: current_user.id) %>
-    <%= link_to "脱退する",  group_group_user_path(group), method: :delete, data: { confirm: "本当に脱退しますか？" }, class:"btn btn-danger" %>
+    <%= link_to '退出する', group_group_user_path(group), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当にグループを退出しますか？" } %>
+  <% elsif group.permits.exists?(user_id: current_user.id) %>
+    <%= link_to '申請取消', group_permits_path(group), method: :delete, class: "btn btn-sm btn-danger" %>
   <% else %>
-    <%= link_to "参加する", group_group_user_path(group), method: :post, class: "btn btn-primary" %>
+    <%= link_to '参加申請', group_permits_path(group), method: :post, class: "btn btn-sm btn-success" %>
   <% end %>
 <% end %>

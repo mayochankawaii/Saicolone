@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       end
     end
     resources :groups do
+      resource :permits, only: [:create, :destroy]
       resource :group_user, only: [:create, :destroy]
       resources :group_characters
       resources :messages, only: [:create, :destroy]
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
         get 'play_character/:id', action: :play_character, as: 'play_character_with_id'
       end
     end
+    get "groups/:id/permits" => "groups#permits", as: :permits
     mount ActionCable.server => '/cable'
     resources :characters
     resources :schedules, except: [:index]

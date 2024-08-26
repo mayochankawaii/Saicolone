@@ -5,10 +5,16 @@
     <% end %>
   </div><br>
   <h5>&nbsp;<i class="fa-solid fa-user"></i>オーナー&nbsp;&nbsp;<%= group.owner.name %></h5><br>
-  <h5><i class="fa-solid fa-users"></i>ユーザー</h5>
+  <div class="d-flex justify-content-start">
+    <h5><i class="fa-solid fa-users"></i>ユーザー</h5>&nbsp;&nbsp;
+    <% if group.owner == current_user %>
+      <%= link_to "承認待ち一覧", permits_path(group) %>
+    <% end %>
+  </div>
   <div class="group-members">
     <% group.group_users.each do |member| %>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= member.user.name %></p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;<%= image_tag member.user.get_image, size:'40x40', class: "icon-img" %>
+      <%= member.user.name %></p>
     <% end %>
   </div>
 </div>

@@ -15,7 +15,9 @@
           <% end %>
         </td>
         <td>
-          <%= link_to group.title,group %><% if group.owner == current_user %>&nbsp;&nbsp;<i class="fa-regular fa-star"></i><% end %>
+          <%= link_to group.title,group %>
+          <% if group.owner == current_user %> &nbsp;&nbsp;<i class="fa-regular fa-star"></i>
+          <% elsif group.group_users.exists?(user_id: current_user.id) %> &nbsp;&nbsp;<i class="fa-solid fa-star"></i> <% end %>
         </td>
         <td>
           <%= group.description %>

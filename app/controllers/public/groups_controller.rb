@@ -1,6 +1,6 @@
 class Public::GroupsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :owner?, only: [:edit, :update, :destroy]
+  before_action :owner?, only: [:edit, :update, :destroy, :permits]
 
   def index
     @groups = current_user.groups
@@ -57,6 +57,11 @@ class Public::GroupsController < ApplicationController
     @characters = current_user.characters
     @character_lists = @group.characters
     render "play_character"
+  end
+
+  def permits
+    @group = Group.find(params[:id])
+    @permits = @group.permits.page(params[:page])
   end
 
   private
