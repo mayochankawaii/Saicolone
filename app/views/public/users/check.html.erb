@@ -1,10 +1,17 @@
-<h1>本当に退会しますか？</h1>
-<p>
-  退会すると、会員情報や<br>
-  これまでのキャラクターデータが閲覧できなくなります。<br>
-  退会する場合は、「退会する」をクリックしてください。
-</p>
-
-<%= link_to "退会しない", mypage_path, :class => "btn btn-primary ms-3" %>
-
-<%= link_to "退会する", withdraw_users_path, method: :patch, :class => "btn btn-danger ms-3", data: { confirm: "本当に退会しますか？" }  %>
+<div class="d-flex justify-content-center align-items-center">
+  <div class="row" style="margin-top: 4rem;">
+    <div class="text-start">
+      <h1 class="text-center">本当に退会しますか？</h1><br>
+      <p>
+        退会すると、会員情報や<br>
+        これまでのキャラクターデータが閲覧できなくなります。<br>
+        退会する場合は、「退会する」をクリックしてください。
+      </p>
+<br></br>
+        <div class="d-flex justify-content-center">
+          <%= link_to "退会しない", mypage_path, :class => "btn btn-primary ms-3" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= link_to "退会する", withdraw_users_path, method: :patch, :class => "btn btn-danger ms-3", data: { confirm: "本当に退会しますか？" }  %>
+        </div>
+    </div>
+  </div>
+</div>
