@@ -46,7 +46,6 @@ class Public::GroupsController < ApplicationController
   end
 
   def destroy
-    @group_character.destroy
     group = Group.find(params[:id])
     group.destroy
     redirect_to groups_path

@@ -10,6 +10,7 @@ class Admin::GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @messages = @group.messages
     @message = Message.new
+    @character_lists = @group.characters
   end
 
   def edit

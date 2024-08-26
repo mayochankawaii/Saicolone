@@ -5,24 +5,24 @@
 
       <div class="row">
         <div class="col-4" style="max-width: 100%; overflow: hidden; position: relative;">
-          <% if @character.image.attached? %>
-          <%= image_tag @character.image, class: "img-fluid", style: "width: 100%; height: 100%; object-fit: cover; object-position: center;" %>
-          <% else %>
-            <%= image_tag 'no_image', class: "img-fluid", style: "width: 100%; height: 100%; object-fit: cover; object-position: center;" %>
-          <% end %>
+          <%= image_tag @character.get_image, class: "img-fluid", style: "width: 100%; height: 100%; object-fit: cover; object-position: center;" %>
         </div>
         <div class="col-md-6">
           <table class="table">
             <tr>
-              <td>キャラクター名</td>
+              <td width="140">登録ユーザー</td>
+              <td><%= @character.user.name %></td>
+            </tr>
+            <tr>
+              <td width="140">キャラクター名</td>
               <td><%= @character.name %></td>
             </tr>
             <tr>
-              <td>ジャンル</td>
+              <td width="140">ジャンル</td>
               <td><%= Genre.find(@character.genre_id).name %></td>
             </tr>
             <tr>
-              <td>ステータス</td>
+              <td width="140">ステータス</td>
               <td><%= @character.status %></td>
             </tr>
           </table>
@@ -35,8 +35,8 @@
 
           <br></br>
             <div class="justify-content-end">
-              <%= link_to "キャラクター一覧へ", admin_characters_path, class:"btn btn-primary" %>
-              <%= link_to '削除', admin_character_path(@character), method: :delete, data: { confirm: '本当に削除しますか?' },class: "btn btn-danger" %>
+              <%= link_to "グループから外す", group_group_character_path(@group, @character), method: :delete, data: { confirm: 'このキャラクターをグループから外しますか？' }, class: "btn btn-danger destroy_character_#{@character.id}"%>
+              <%= link_to "グループに戻る", group_path(@group), class:"btn btn-primary" %>
             </div>
           </div>
         </div>

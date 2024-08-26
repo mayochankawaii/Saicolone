@@ -4,9 +4,11 @@ class Admin::SearchesController < ApplicationController
     @search = params[:search]
     @range = params[:range]
 
-    if @range == "キャラクター"
-      @characters = Character.looks(@search, @word)
-      @genres = Genre.all
+    if @range == "グループ"
+      @groups = Group.looks(@search, @word)
     end
+
+    # テンプレートのレンダリング
+    render "public/searchs/search" # テンプレートのパスを指定してレンダリング
   end
 end

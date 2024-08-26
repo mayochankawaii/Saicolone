@@ -1,2 +1,32 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4><%= @user.name %>さんの詳細</h4>
+      <div class="d-flex align-items-center">
+        <table class="table table-borderless">
+          <tr>
+            <th>ユーザーID</td>
+            <td><%= @user.id %></td>
+          </tr>
+          <tr>
+
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @user.email %></td>
+          </tr>
+
+          <tr>
+            <th>会員ステータス</th>
+            <th><%= @user.user_status %></th>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td><%= link_to "編集する", edit_admin_user_path, class:"btn btn-success" %>
+
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

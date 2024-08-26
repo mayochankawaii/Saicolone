@@ -1,0 +1,17 @@
+<div class="side-bar">
+  <div>
+    <%= link_to admin_groups_path, class: "btn btn-flat" do %>
+      <span>グループ一覧</span>
+    <% end %>
+  </div><br>
+  <h5>&nbsp;<i class="fa-solid fa-user"></i>オーナー&nbsp;&nbsp;<%= group.owner.name %></h5><br>
+  <div class="d-flex justify-content-start">
+    <h5><i class="fa-solid fa-users"></i>ユーザー</h5>&nbsp;&nbsp;
+  </div>
+  <div class="group-members">
+    <% group.group_users.each do |member| %>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;<%= image_tag member.user.get_image, size:'40x40', class: "icon-img" %>
+      <%= member.user.name %></p>
+    <% end %>
+  </div>
+</div>

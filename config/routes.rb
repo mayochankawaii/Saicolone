@@ -48,6 +48,7 @@ Rails.application.routes.draw do
     # resources :groups, only: [:show, :index, :destroy]
     resources :groups, only: [:index, :show, :destroy] do
       resource :group_user, only: [:destroy]
+      resources :group_characters, only: [:destroy]
       # resource :group_character, except: [:new, :show, :edit]
       resources :messages, only: [:destroy]
     end
