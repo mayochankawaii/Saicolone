@@ -2,15 +2,19 @@ class Public::CharactersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @character = Character.new
-    @characters = current_user.characters
+    if current_user
+      @character = Character.new
+      @characters = current_user.characters
+    else
+      redirect_to new_user_session_path, alert: 'ログインが必要です。'
+    end
   end
 
   def new
     if current_user
       @character = Character.new
     else
-      redirect_to new_user_session_path
+      redirect_to new_user_session_path, alert: 'ログインが必要です。'
     end
   end
 

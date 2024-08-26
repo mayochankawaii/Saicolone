@@ -402,6 +402,17 @@ button.btn {
   object-fit: contain;
 }
 
+.card-title {
+  white-space: nowrap; /* 横幅のMAXに達しても改行しない */
+  overflow: hidden; /* 溢れた部分を隠す */
+  text-overflow: ellipsis; /* 「…」と省略 */
+}
+.card-text {
+  white-space: nowrap; /* 横幅のMAXに達しても改行しない */
+  overflow: hidden; /* 溢れた部分を隠す */
+  text-overflow: ellipsis; /* 「…」と省略 */
+}
+
 .img-character {
   max-width: 30%;
   max-height: 180px;

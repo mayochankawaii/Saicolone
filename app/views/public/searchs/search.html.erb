@@ -10,12 +10,22 @@
     <% if @groups.present? %>
     <% @groups.each do |group| %>
         <td width="60">
+
+          <% if user_signed_in? %>
           <%= link_to group_path(group.id) do %>
             <%= image_tag group.get_image, size: '60x60', class: "icon-img" %>
           <% end %>
         </td>
         <td>
           <%= link_to group.title,group %>
+          <% else %>
+
+            <%= image_tag group.get_image, size: '60x60', class: "icon-img" %>
+        </td>
+        <td>
+          <%= group.title %>
+          <% end %>
+
           <% if current_user.present? %>
             <% if group.owner == current_user %>
               &nbsp;&nbsp;<i class="fa-regular fa-star"></i>

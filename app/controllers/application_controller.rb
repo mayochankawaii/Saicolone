@@ -27,4 +27,15 @@ before_action :authenticate_admin!, if: :admin_url
     request.fullpath.include?("/admin")
   end
 
+
+  def set_current_user
+    @current_user=User.find_by(id :session[:user_id])
+  end
+
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to root_path
+    end
+  end
 end

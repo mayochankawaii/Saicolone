@@ -3,15 +3,21 @@ class Public::GroupsController < ApplicationController
   before_action :owner?, only: [:edit, :update, :destroy, :permits]
 
   def index
-    @groups = current_user.groups
-    @group_lists = Group.all.order(:id)
+    if current_user
+      @groups = current_user.groups
+      @group_lists = Group.all.order(:id)
+    else
+      redirect_to new_user_session_path, alert: 'ログインが必要です。'
+    end
   end
 
   def show
     @group = Group.find(params[:id])
     @messages = @group.messages
     @message = Message.new
+    if user_signed_in?
     @characters = current_user.characters
+    end
     @character_lists = @group.characters
   end
 

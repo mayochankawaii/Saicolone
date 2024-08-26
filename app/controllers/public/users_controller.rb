@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:index, :edit, :update, :destroy]
 
   def edit
     @user = current_user
@@ -9,7 +9,7 @@ class Public::UsersController < ApplicationController
     if current_user
       @user = current_user
     else
-      redirect_to new_user_session_path
+      redirect_to new_user_session_path, alert: 'ログインが必要です。'
     end
   end
 
