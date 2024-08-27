@@ -3,26 +3,28 @@
     <div class="col">
       <h4>ユーザー一覧</h4>
       <br>
-        <table class="table">
-          <thead>
+      <table class="table">
+        <thead>
+          <tr>
+            <thead>
+            <th>ユーザー名</th>
+            <th width="60">ID</th>
+            <th>メールアドレス</th>
+            <th><br></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @users.each do |user| %>
             <tr>
-              <th>ユーザー名</th>
-              <th width="60">ID</th>
-              <th>メールアドレス</th>
-              <th></th>
+              <td><%= user.name %></td>
+              <td><%= user.id %></td>
+              <td><%= user.email %></td>
+              <td><%= link_to "詳細表示", admin_user_path(user), class: "btn btn-success" %></td>
             </tr>
-          </thead>
-          <tbody>
-            <% @users.each do |user| %>
-              <tr>
-                <td><%= user.name %></td>
-                <td><%= user.id %></td>
-                <td><%= user.email %></td>
-                <td><%= link_to "詳細表示", admin_user_path(user), class: "btn btn-success" %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

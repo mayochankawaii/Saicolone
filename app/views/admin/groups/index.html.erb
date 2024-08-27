@@ -1,38 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
+<h4 style="padding-left: 10px;">グループ一覧</h4>
+<br>
+<table class="table table-bordered">
+  <tr class="table-active">
+    <th><br></th>
+    <th colspan="2">グループ名</th>
+    <th>参加人数</th>
+  </tr>
 
-      <div class="d-flex justify-content-between">
-        <h4 class="group-list-title">グループ一覧</h4><br></br>
-      </div>
-<br></br>
-      <table class="table table-bordered">
-        <tr class="table-active">
-          <th><br></th>
-          <th colspan="2">グループ名</th>
-          <th>参加人数</th>
-        </tr>
-
-        <% @groups.each do |group| %>
-          <tr>
-            <td width="60">
-              <%= link_to admin_group_path(group.id) do %>
-                <%= image_tag group.get_image, size: '60x60', class: "icon-img" %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to group.title, admin_group_path(group.id), class: "group-link" %>
-            </td>
-            <td width="100">
-              <i class="fa-solid fa-users"></i><%= group.users.count %>
-            </td>
-            <td width="168">
-              <%= link_to 'グループを削除', admin_group_path(group), method: :delete, data: { confirm: '本当に削除しますか?' },class: "btn btn-sm btn-danger" %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-
-    </div>
-  </div>
-</div>
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td width="60">
+          <%= link_to admin_group_path(group.id) do %>
+            <%= image_tag group.get_image, size: '60x60', class: "icon-img" %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to group.title, admin_group_path(group.id), class: "group-link" %>
+        </td>
+        <td width="100">
+          <i class="fa-solid fa-users"></i><%= group.users.count %>
+        </td>
+        <td width="168">
+          <%= link_to 'グループを削除', admin_group_path(group), method: :delete, data: { confirm: '本当に削除しますか?' },class: "btn btn-sm btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -35,8 +35,8 @@
 
           <br></br>
             <div class="justify-content-end">
-              <%= link_to "グループから外す", group_group_character_path(@group, @character), method: :delete, data: { confirm: 'このキャラクターをグループから外しますか？' }, class: "btn btn-danger destroy_character_#{@character.id}"%>
-              <%= link_to "グループに戻る", group_path(@group), class:"btn btn-primary" %>
+              <%= link_to "グループから外す", admin_group_group_character_path(@group, @character), method: :delete, data: { confirm: 'このキャラクターをグループから外しますか？' }, class: "btn btn-danger destroy_character_#{@character.id}"%>
+              <%= link_to "グループに戻る", admin_group_path(@group), class:"btn btn-primary" %>
             </div>
           </div>
         </div>

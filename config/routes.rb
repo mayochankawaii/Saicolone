@@ -48,9 +48,11 @@ Rails.application.routes.draw do
     # resources :groups, only: [:show, :index, :destroy]
     resources :groups, only: [:index, :show, :destroy] do
       resource :group_user, only: [:destroy]
-      resources :group_characters, only: [:destroy]
-      # resource :group_character, except: [:new, :show, :edit]
+      resources :group_characters, only: [:show, :destroy]
       resources :messages, only: [:destroy]
+      collection do
+        get 'play_character/:id', action: :play_character, as: 'play_character_with_id'
+      end
     end
     resources :characters, only: [:index, :show, :destroy]
     resources :genres, only: [:index, :create, :edit, :update]
