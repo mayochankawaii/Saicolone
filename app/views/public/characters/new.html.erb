@@ -7,7 +7,9 @@
         <div>
           <%= f.label :image, 'キャラクター画像' %>
           <%= f.file_field :image %>
-          <%= f.label :genre, 'ジャンル' %>
+        </div>
+        <div>
+          <%= f.label :genre, 'ジャンル' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: true %>
         </div>
         <div>
