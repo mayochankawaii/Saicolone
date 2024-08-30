@@ -1,13 +1,13 @@
 class Public::SessionsController < Devise::SessionsController
   before_action :reject_user, only: [:create]
 
-  protected
-
   def guest_sign_in
     user = User.guest
     sign_in user
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
+
+  protected
 
   def reject_user
     @user = @user.find_by(email: params[:user][:email].downcase)

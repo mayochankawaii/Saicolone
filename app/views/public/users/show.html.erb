@@ -3,7 +3,7 @@
     <div class="col">
       <div class="d-flex justify-content-between">
         <h4 class="pt-2"><%= @user.name %> のマイページ</h4>
-        <% if user.email != "guest@example.com" %>
+        <% if @user.email != "guest@example.com" %>
           <%= link_to "編集", edit_user_path(@user), class: "btn btn-primary" %>
         <% end %>
       </div>
