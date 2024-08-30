@@ -40,7 +40,7 @@ TRPGのプレイを円滑に進める手助けとなるコミュニティサイ�
 - ER図
 ![スクリーンショット 2024-08-28 140137](https://github.com/user-attachments/assets/e77945d8-ecf6-4d8b-bb02-e5a0592d2bde)
 - UI flow
-![スクリーンショット 2024-08-28 140042](https://github.com/user-attachments/assets/0284669b-455e-4912-acd1-f0d2a2d96bdd)
+![スクリーンショット 2024-08-28 143223](https://github.com/user-attachments/assets/4abc7e95-b43a-420f-88d4-0385f3f4226a)
 
 
 ## 開発環境

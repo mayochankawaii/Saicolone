@@ -5,8 +5,8 @@
     <!--タグの中にbrタグを入れることで空白のセルを作れる-->
     <th>ｷｬﾗｸﾀｰ</th>
     <th>一覧</th>
-    <th>ジャンル</th>
-    <th><br></th>
+    <th width="90">ジャンル</th>
+    <th width="100"><br></th>
   </tr>
     <% @characters.each do |character| %>
     <tr>
@@ -17,13 +17,13 @@
           <% end %>
         </div>
       </td>
-      <td>
+      <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 0;">
         <%= link_to character.name,admin_character_path(character) %>
       </td>
-      <td width="100">
+      <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 0;">
         <%= character.genre ? character.genre.name : 'ジャンルが設定されていません' %>
       </td>
-      <td width="100">
+      <td>
         <%= link_to '削除', admin_character_path(character), method: :delete, data: { confirm: '本当に削除しますか?' },class: "btn btn-sm btn-danger" %>
       </td>
     </tr>

@@ -2,27 +2,27 @@
 <br>
 <table class="table table-bordered">
   <tr class="table-active">
-    <th><br></th>
-    <th colspan="2">グループ名</th>
-    <th>参加人数</th>
+    <th width="60"><br></th>
+    <th>グループ名</th>
+    <th colspan="2">参加人数</th>
   </tr>
 
   <tbody>
     <% @groups.each do |group| %>
       <tr>
-        <td width="60">
+        <td>
           <%= link_to admin_group_path(group.id) do %>
             <%= image_tag group.get_image, size: '60x60', class: "icon-img" %>
           <% end %>
         </td>
-        <td>
+        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 0;">
           <%= link_to group.title, admin_group_path(group.id), class: "group-link" %>
         </td>
-        <td width="100">
+        <td width="70">
           <i class="fa-solid fa-users"></i><%= group.users.count %>
         </td>
-        <td width="168">
-          <%= link_to 'グループを削除', admin_group_path(group), method: :delete, data: { confirm: '本当に削除しますか?' },class: "btn btn-sm btn-danger" %>
+        <td width="90">
+          <%= link_to '削除', admin_group_path(group), method: :delete, data: { confirm: '本当にグループを削除しますか?' },class: "btn btn-sm btn-danger" %>
         </td>
       </tr>
     <% end %>

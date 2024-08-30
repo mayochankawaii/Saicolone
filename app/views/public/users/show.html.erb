@@ -3,7 +3,9 @@
     <div class="col">
       <div class="d-flex justify-content-between">
         <h4 class="pt-2"><%= @user.name %> のマイページ</h4>
-        <%= link_to "編集", edit_user_path(@user), class: "btn btn-primary" %>
+        <% if user.email != "guest@example.com" %>
+          <%= link_to "編集", edit_user_path(@user), class: "btn btn-primary" %>
+        <% end %>
       </div>
       <%= image_tag @user.get_image, size: '100x100', class: "icon-img" %>
 

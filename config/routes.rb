@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  devise_scope :user do
+    post "/guest_sign_in", to: "public/sessions#guest_sign_in"
+  end
+
   # ユーザー用
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
