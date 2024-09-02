@@ -9,6 +9,9 @@
     <th width="100"><br></th>
   </tr>
     <% @characters.each do |character| %>
+    <% if character.user && character.user.is_deleted? %>
+      <% next %>
+    <% end %>
     <tr>
       <td width="80">
         <div style="max-height: 280px; overflow: hidden;">

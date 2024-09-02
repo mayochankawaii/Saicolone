@@ -32,7 +32,7 @@
               <%= group.description %>
             </td>
             <td width="100">
-              <i class="fa-solid fa-users"></i><%= group.users.count %>
+              <i class="fa-solid fa-users"></i><%= group.users.select { |user| user.user_status == "有効" }.count %>
             </td>
           </tr>
         <% end %>

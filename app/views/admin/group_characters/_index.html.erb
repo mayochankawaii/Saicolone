@@ -2,6 +2,9 @@
   <h5><i class="fa-solid fa-gamepad"></i>キャラクター</h5>
 </div><br>
 <% character_lists.each do |character| %>
+<% if character.user && character.user.is_deleted? %>
+  <% next %>
+<% end %>
   <% group_ids = character.groups.pluck(:id) %>
   <% if group_ids.include?(group.id) %>
     <%= render 'admin/group_characters/card', group: group, character: character %>
