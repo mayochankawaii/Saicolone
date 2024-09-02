@@ -6,6 +6,9 @@
       <%= link_to "一覧", play_character_with_id_groups_path(group) %>
     </div><br>
     <% character_lists.each do |character| %>
+    <% if character.user && character.user.is_deleted? %>
+      <% next %>
+    <% end %>
       <% group_ids = character.groups.pluck(:id) %>
       <% if group_ids.include?(group.id) %>
         <%= render 'public/group_characters/card', group: group, character: character %>
@@ -18,6 +21,9 @@
       <%= link_to "追加", group_group_characters_path(group.id) %>
     </div><br>
     <% characters.each do |character| %>
+    <% if character.user && character.user.is_deleted? %>
+      <% next %>
+    <% end %>
     <% group_ids = character.groups.pluck(:id) %>
 
       <% if group_ids.include?(group.id) %>

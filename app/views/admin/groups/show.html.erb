@@ -22,22 +22,12 @@
     <p><%= @group.description %></p>
   </div>
 
-  <% if user_signed_in? %>
-    <% if @group.group_users.exists?(user_id: current_user.id) %>
-    <div id="message_count">
-      <%= render 'admin/messages/count', messages: @messages %>
-    </div>
-    <div id="message_index">
-      <%= render 'admin/messages/index', group: @group, message: @message %>
-    </div>
-      <%= render 'admin/messages/form', group: @group, message: @message %>
-    <% end %>
-  <% end %>
-  <br>
-  <br>
-  <br>
-  <br>
-
+  <div id="message_count">
+    <%= render 'admin/messages/count', messages: @messages %>
+  </div>
+  <div id="message_index">
+    <%= render 'admin/messages/index', group: @group, message: @message %>
+  </div>
 </div>
 
 <script>

@@ -11,6 +11,9 @@
 
         <div class="row">
         <% @character_lists.each do |character| %>
+        <% if character.user && character.user.is_deleted? %>
+          <% next %>
+        <% end %>
           <div class="col-lg-6 col-12">
             <!--<div class="col-md-4" style="max-width: 20%; overflow: hidden; position: relative;">-->
             <div class="col-md-4 img-character">

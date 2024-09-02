@@ -10,6 +10,9 @@
   </div>
   <div class="group-members">
     <% group.group_users.each do |member| %>
+    <% if member.user && member.user.is_deleted? %>
+      <% next %>
+    <% end %>
       <p>&nbsp;&nbsp;&nbsp;&nbsp;<%= image_tag member.user.get_image, size:'40x40', class: "icon-img" %>
       <%= member.user.name %></p>
     <% end %>

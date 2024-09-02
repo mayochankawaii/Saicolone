@@ -19,7 +19,7 @@
           <%= link_to group.title, admin_group_path(group.id), class: "group-link" %>
         </td>
         <td width="70">
-          <i class="fa-solid fa-users"></i><%= group.users.count %>
+          <i class="fa-solid fa-users"></i><%= group.users.select { |user| user.user_status == "有効" }.count %>
         </td>
         <td width="90">
           <%= link_to '削除', admin_group_path(group), method: :delete, data: { confirm: '本当にグループを削除しますか?' },class: "btn btn-sm btn-danger" %>

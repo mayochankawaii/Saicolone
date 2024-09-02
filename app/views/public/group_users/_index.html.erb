@@ -13,6 +13,9 @@
   </div>
   <div class="group-members">
     <% group.group_users.each do |member| %>
+    <% if member.user && member.user.is_deleted? %>
+      <% next %>
+    <% end %>
       <p>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to group_group_user_path(group, member.user) do %><%= image_tag member.user.get_image, size:'40x40', class: "icon-img" %><% end %>
       <%= member.user.name %></p>
     <% end %>
