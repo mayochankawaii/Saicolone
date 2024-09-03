@@ -23,6 +23,24 @@
         </div>
       <% end %>
 
+      <% unless @user.id == current_user.id %>
+        <% if @isRoom == true %>
+          <p class="user-show-room"><%= link_to "/rooms/#{@roomId}", class: "btn btn-flat" do %>
+              <span>チャットへ</span> <!-- ここで.btn-flat spanを追加 -->
+            <% end %>
+          </p>
+        <% else %>
+          <%= form_for @room do |f| %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, value: @user.id %>
+            <% end %>
+            <button class="btn btn-flat user-show-chat">
+              <span>チャットを始める</span>
+            </button>
+          <% end %>
+        <% end %>
+      <% end %>
+
     </div>
   </div>
 </div>

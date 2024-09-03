@@ -30,7 +30,10 @@ Rails.application.routes.draw do
       end
     end
     get "groups/:id/permits" => "groups#permits", as: :permits
-    mount ActionCable.server => '/cable'
+    resources :rooms, only: [:create,:show] do
+      resources :direct_messages, only: [:create, :destroy]
+    end
+    # mount ActionCable.server => '/cable'
     resources :characters
     resources :schedules, except: [:index]
     get "/search", to: "searches#search"

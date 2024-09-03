@@ -1,0 +1,56 @@
+<div class="sidebars">
+  <div class="sidebar is-closed" style="padding: 1rem; height: vh-100%;">
+    <button class="sidebar-toggle is-closed"><i class="fa fa-plus icon"></i></button>
+    <% @entries.each do |e| %>
+      <div class="user-name">
+      <strong>
+        <%#= image_tag e.user.avatar, class:"user-image" %>
+          <a class="rooms-user-link" href="/users/<%= e.user.id %>">
+            <%= e.user.name %>さん
+          </a>
+      </strong>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="messages" style="padding-right: 1rem; padding-left: 1rem;">
+  <div class="d-flex justify-content-between">
+    <div class="d-flex" style="margin-top: 4px;">
+      <% @entries.each do |e| %>
+        <% if @myUserId != e.user.id %>
+          <h4 class="rooms-title"><%= e.user.name %>さんとのトークルーム</h4>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+<br></br>
+  <% if user_signed_in? %>
+    <div id="message_count">
+      <div class="d-flex justify-content-between">
+        <h5>メッセージ</h5>
+      </div>
+    </div>
+    <div id="message_index">
+      <%= render 'public/direct_messages/index', room: @room, direct_message: @direct_message %>
+    </div>
+      <%= render 'public/direct_messages/form', room: @room, direct_message: @direct_message %>
+  <% end %>
+  <br>
+  <br>
+  <br>
+  <br>
+
+</div>
+
+<script>
+
+  var toggleBtn = document.querySelector('.sidebar-toggle');
+  var sidebar = document.querySelector('.sidebar');
+
+  toggleBtn.addEventListener('click', function() {
+    toggleBtn.classList.toggle('is-closed');
+    sidebar.classList.toggle('is-closed');
+  });
+</script>
