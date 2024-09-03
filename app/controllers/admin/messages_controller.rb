@@ -7,6 +7,7 @@ class Admin::MessagesController < ApplicationController
     @message = @group.messages.new(message_params)
     # メッセージ投稿者(user)のidを代入
     @message.user_id = current_user.id
+    @message.score = Language.get_data(message_params[:content])  #この行を追加
     if @message.save
       flash.now[:notice] = "メッセージの投稿に成功しました。"
     else

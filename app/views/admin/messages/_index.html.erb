@@ -11,6 +11,7 @@
       <span><b><%= message.user.name %></b></span>&nbsp;&nbsp;<small><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></small>
       <!-- メッセージの表示 -->
       <p><%= safe_join(message.content.split("\n"),tag(:br))%></p>
+      <p class="sentiment-score">本文の感情分析スコア[<%= @message.score %>]</p>
     </div>
     <div style="text-align: right; margin-left: auto;">
       <%= link_to group_message_path(message.group_id, message.id), method: :delete, remote: true do %>
