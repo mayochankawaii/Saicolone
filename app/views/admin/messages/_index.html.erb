@@ -11,10 +11,10 @@
       <span><b><%= message.user.name %></b></span>&nbsp;&nbsp;<small><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></small>
       <!-- メッセージの表示 -->
       <p><%= safe_join(message.content.split("\n"),tag(:br))%></p>
-      <p class="sentiment-score">本文の感情分析スコア[<%= @message.score %>]</p>
+      <p class="sentiment-score">本文の感情分析スコア[<%= message.score %>]</p>
     </div>
     <div style="text-align: right; margin-left: auto;">
-      <%= link_to group_message_path(message.group_id, message.id), method: :delete, remote: true do %>
+      <%= link_to admin_group_message_path(message.group_id, message.id), method: :delete, remote: true do %>
         <button class="btn btn-outline-secondary" style="padding:0rem 0.4rem 0.2rem 0.5rem; border-radius: 20vh;">×</button>
       <% end %>
     </div>
