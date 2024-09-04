@@ -39,7 +39,7 @@ class Public::CharactersController < ApplicationController
   def update
     @character = Character.find(params[:id])
     if @character.update(character_params)
-      redirect_to character_path(@character), notice: 'キャラクターを更新しました。'
+      redirect_to character_path(@character), notice: 'キャラクターを更新しました'
     else
       render :edit
     end

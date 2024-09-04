@@ -1,0 +1,24 @@
+<hr>
+<%#= render "public/shared/error_direct_messages", resource: f.object %>
+<% room.direct_messages.each do |direct_message| %>
+  <% if direct_message.user && direct_message.user.is_deleted? %>
+    <% next %>
+  <% end %>
+  <div class="d-flex" style="padding-bottom: 16px;">
+    <div class="profile-img-frame">
+      <%= image_tag direct_message.user.get_image, size:'60x60', class: "icon-img" %>
+    </div>
+    <div class="posted-chat-content" style="padding-left: 10px;">
+      <span><b><%= direct_message.user.name %></b></span>&nbsp;&nbsp;<small><%= direct_message.created_at.strftime("%Y/%m/%d %H:%M") %></small>
+      <!-- メッセージの表示 -->
+      <p><%= safe_join(direct_message.content.split("\n"),tag(:br))%></p>
+    </div>
+    <div style="text-align: right; margin-left: auto;">
+      <% if direct_message.user == current_user %>
+        <%= link_to room_direct_message_path(direct_message.room_id, direct_message.id), method: :delete, remote: true do %>
+          <button class="btn btn-outline-secondary" style="padding:0rem 0.4rem 0.2rem 0.5rem; border-radius: 20vh;">×</button>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

@@ -1,11 +1,28 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <div class="d-flex justify-content-between">
-        <h4 class="pt-2"><%= @user.name %> のマイページ</h4>
-        <% if @user.email != "guest@example.com" %>
-          <%= link_to "編集", edit_user_path(@user), class: "btn btn-primary" %>
+      <div class="d-flex justify-content-start">
+        <h4 class="pt-2"><%= @user.name %></h4>&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <% unless @user.id == current_user.id %>
+          <% if @isRoom == true %>
+            <p class="user-show-room" style="margin-bottom: 0px; margin-top: 6px;">
+              <%= link_to "/rooms/#{@roomId}", class: "btn btn-outline-secondary", style: "padding:0.2rem 0.4rem 0.2rem 0.4rem; border-radius: 20vh;" do %>
+                <i class="fa-solid fa-envelope"></i>
+              <% end %>
+            </p>
+          <% else %>
+            <%= form_for @room do |f| %>
+              <%= fields_for @entry do |e| %>
+                <%= e.hidden_field :user_id, value: @user.id %>
+              <% end %>
+              <button class="btn btn-flat user-show-chat">
+                <span><i class="fa-solid fa-envelope"></i>DMを始める</span>
+              </button>
+            <% end %>
+          <% end %>
         <% end %>
+
       </div>
       <%= image_tag @user.get_image, size: '100x100', class: "icon-img" %>
 
@@ -29,6 +46,7 @@
   </div>
 </div>
 
+<% if @user == current_user %>
 <div class="container">
   <div class="wrapper pt-4">
     <%= link_to characters_path, class: "btn btn-flat" do %>
@@ -39,3 +57,4 @@
     <% end %>
   </div>
 </div>
+<% end %>

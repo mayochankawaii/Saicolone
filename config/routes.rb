@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to =>"homes#top"
     get '/about' => 'homes#about'
-    get "/mypage" => "users#show"
-    resources :users, except: [:new, :index, :show, :create] do
+    get "/mypage" => "users#mypage"
+    resources :users, except: [:new, :index, :create] do
       collection do
         patch :withdraw
         get :check
@@ -30,7 +30,10 @@ Rails.application.routes.draw do
       end
     end
     get "groups/:id/permits" => "groups#permits", as: :permits
-    mount ActionCable.server => '/cable'
+    resources :rooms, only: [:create, :index, :show] do
+      resources :direct_messages, only: [:create, :destroy]
+    end
+    # mount ActionCable.server => '/cable'
     resources :characters
     resources :schedules, except: [:index]
     get "/search", to: "searches#search"

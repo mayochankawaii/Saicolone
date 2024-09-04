@@ -31,7 +31,7 @@ class Public::GroupCharactersController < ApplicationController
   def update
     @character = Character.find(params[:id])
     if @character.update(character_params)
-      redirect_to group_group_character_path(@character)
+      redirect_to group_group_character_path(@character), notice: 'キャラクターを更新しました'
     else
       render :edit
     end
