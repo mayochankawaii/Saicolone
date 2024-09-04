@@ -1,16 +1,23 @@
 <div class="sidebars">
   <div class="sidebar is-closed" style="padding: 1rem; height: vh-100%;">
     <button class="sidebar-toggle is-closed"><i class="fa fa-plus icon"></i></button>
-    <% @entries.each do |e| %>
-      <div class="user-name">
-      <strong>
-        <%#= image_tag e.user.avatar, class:"user-image" %>
-          <a class="rooms-user-link" href="/users/<%= e.user.id %>">
-            <%= e.user.name %>さん
-          </a>
-      </strong>
-      </div>
-    <% end %>
+    <div class="side-bar">
+      <div>
+        <%= link_to rooms_path, class: "btn btn-flat" do %>
+          <span>ダイレクトメッセージ一覧</span>
+        <% end %>
+      </div><br>
+      <% @entries.each do |e| %>
+        <div class="user-name">
+        <strong>
+          <p><%= link_to "/users/#{e.user.id}" do %><%= image_tag e.user.get_image, size:'40x40', class: "icon-img" %><% end %>
+            <a class="rooms-user-link" href="/users/<%= e.user.id %>">
+              <%= e.user.name %>
+            </a></p>
+        </strong>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
@@ -19,7 +26,7 @@
     <div class="d-flex" style="margin-top: 4px;">
       <% @entries.each do |e| %>
         <% if @myUserId != e.user.id %>
-          <h4 class="rooms-title"><%= e.user.name %>さんとのトークルーム</h4>
+          <h4 class="rooms-title"><%= e.user.name %>とのダイレクトメッセージ</h4>
         <% end %>
       <% end %>
     </div>

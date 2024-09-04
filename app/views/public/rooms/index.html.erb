@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <div class="d-flex justify-content-between">
+        <h4 class="room-list-title">ダイレクトメッセージ一覧</h4><br></br>
+      </div>
+<br></br>
+      <table class="table table-bordered">
+        <tr class="table-active">
+          <th colspan="2">ユーザー</th>
+          <th></th>
+        </tr>
+
+        <% @rooms.each do |room| %>
+          <% room.users.each do |user| %>
+            <% next if user == current_user %> <!-- ログインユーザーと一致する場合は表示しない -->
+            <tr>
+              <td width="60">
+                <%= link_to room_path(room.id) do %>
+                  <%= image_tag user.get_image, size: '60x60', class: "icon-img" %>
+                <% end %>
+              </td>
+              <td width="100">
+                <%= link_to user.name, room_path(room.id), class: "room-link" %>
+            </td>
+          <% end %>
+            <td>
+            <% latest_message = room.direct_messages.order(created_at: :desc).first %>
+            <% if latest_message %>
+              <p><%= safe_join(latest_message.content.split("\n"), tag(:br)).html_safe %></p>
+            <% else %>
+              <p>メッセージがありません</p>
+            <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+
+    </div>
+  </div>
+</div>

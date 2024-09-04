@@ -2,7 +2,29 @@
   <div class="row">
     <div class="col">
       <div class="d-flex justify-content-between">
-        <h4 class="pt-2"><%= @user.name %> のマイページ</h4>
+        <div class="d-flex justify-content-start">
+          <h4 class="pt-2"><%= @user.name %></h4>&nbsp;&nbsp;&nbsp;&nbsp;
+
+          <% unless @user.id == current_user.id %>
+            <% if @isRoom == true %>
+              <p class="user-show-room" style="margin-bottom: 0px; margin-top: 6px;">
+                <%= link_to "/rooms/#{@roomId}", class: "btn btn-outline-secondary", style: "padding:0.2rem 0.4rem 0.2rem 0.4rem; border-radius: 20vh;" do %>
+                  <i class="fa-solid fa-envelope"></i>
+                <% end %>
+              </p>
+            <% else %>
+              <%= form_for @room do |f| %>
+                <%= fields_for @entry do |e| %>
+                  <%= e.hidden_field :user_id, value: @user.id %>
+                <% end %>
+                <button class="btn btn-flat user-show-chat">
+                  <span>DMを始める</span>
+                </button>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+
         <%= link_to "グループに戻る", group_path(@group), class:"btn btn-primary" %>
       </div>
       <%= image_tag @user.get_image, size: '100x100', class: "icon-img" %>
@@ -23,24 +45,19 @@
         </div>
       <% end %>
 
-      <% unless @user.id == current_user.id %>
-        <% if @isRoom == true %>
-          <p class="user-show-room"><%= link_to "/rooms/#{@roomId}", class: "btn btn-flat" do %>
-              <span>チャットへ</span> <!-- ここで.btn-flat spanを追加 -->
-            <% end %>
-          </p>
-        <% else %>
-          <%= form_for @room do |f| %>
-            <%= fields_for @entry do |e| %>
-              <%= e.hidden_field :user_id, value: @user.id %>
-            <% end %>
-            <button class="btn btn-flat user-show-chat">
-              <span>チャットを始める</span>
-            </button>
-          <% end %>
-        <% end %>
-      <% end %>
-
     </div>
   </div>
 </div>
+
+<% if @user == current_user %>
+<div class="container">
+  <div class="wrapper pt-4">
+    <%= link_to characters_path, class: "btn btn-flat" do %>
+      <span>キャラクター一覧</span>
+    <% end %>
+    <%= link_to groups_path, class: "btn btn-flat" do %>
+      <span>グループ一覧</span>
+    <% end %>
+  </div>
+</div>
+<% end %>

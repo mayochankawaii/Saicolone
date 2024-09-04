@@ -1,5 +1,15 @@
 class Public::RoomsController < ApplicationController
   before_action :authenticate_user!
+  include RoomsHelper
+
+  def index
+    if current_user
+      # @rooms = current_user.rooms
+      @rooms = current_user.rooms.joins(:direct_messages).includes(:direct_messages).order("direct_messages.created_at DESC")
+    else
+      redirect_to new_user_session_path, alert: 'ログインが必要です。'
+    end
+  end
 
   def create
     @room = Room.create

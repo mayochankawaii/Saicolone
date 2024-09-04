@@ -32,8 +32,8 @@
           <br></br>
             <div class="justify-content-end">
               <% if @character.user == current_user %>
-              <%= link_to "キャラクター一覧へ", characters_path, class:"btn btn-primary" %>
-              <%= link_to "編集する", edit_character_path(@character), class:"btn btn-primary" %>
+                <%= link_to "キャラクター一覧へ", characters_path, class:"btn btn-primary" %>
+                <%= link_to "編集する", edit_character_path(@character), class:"btn btn-primary" %>
                 <%#= link_to "削除", @character, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger destroy_character_#{@character.id}"%>
               <% end %>
             </div>

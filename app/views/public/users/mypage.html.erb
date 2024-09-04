@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="d-flex justify-content-between">
+        <h4 class="pt-2"><%= @user.name %> のマイページ</h4>
+        <% if @user.email != "guest@example.com" %>
+          <%= link_to "編集", edit_user_path(@user), class: "btn btn-primary" %>
+        <% end %>
+      </div>
+      <%= image_tag @user.get_image, size: '100x100', class: "icon-img" %>
+
+<br></br><br>
+    <div class="d-flex justify-content-start">
+      <% if @user.profile.present? %>
+          <h5>プロフィール</h5>
+        </div>
+        <div class="p-2">
+          <%= safe_join(@user.profile.split("\n"), tag(:br)) %><br>
+        </div>
+      <% end %>
+      <% if @user.description.present? %>
+      	<div class="p-2">
+      	  <h5>TRPG詳細</h5>
+      	  <%= safe_join(@user.description.split("\n"),tag(:br))%><br>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="wrapper pt-4">
+    <%= link_to characters_path, class: "btn btn-flat" do %>
+      <span>キャラクター一覧</span>
+    <% end %>
+    <%= link_to groups_path, class: "btn btn-flat" do %>
+      <span>グループ一覧</span>
+    <% end %>
+  </div>
+</div>
