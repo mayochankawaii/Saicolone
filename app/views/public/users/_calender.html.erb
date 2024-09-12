@@ -1,0 +1,12 @@
+<%= month_calendar events: events do |date, events| %>
+  <%= date.day %>
+  <% events.each do |event| %>
+    <div>
+      <% if event.is_a?(Submission) %>
+        <%= link_to '<i class="fa-solid fa-exclamation"></i>', group_path(group) %>
+      <% elsif event.is_a?(Session) %>
+        <%= link_to '', group_path(group) %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

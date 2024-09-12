@@ -16,7 +16,7 @@
     <div style="text-align: right; margin-left: auto;">
       <% if message.user == current_user %>
         <%= link_to group_message_path(message.group_id, message.id), method: :delete, remote: true do %>
-          <button class="btn btn-outline-secondary" style="padding:0rem 0.4rem 0.2rem 0.5rem; border-radius: 20vh;">×</button>
+          <button class="btn btn-outline-secondary" style="padding:0rem 0.18rem 0rem 0.2rem; border-radius: 20vh;"><i class="fa-regular fa-circle-xmark"></i></button>
         <% end %>
       <% end %>
     </div>
