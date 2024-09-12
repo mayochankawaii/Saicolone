@@ -13,12 +13,16 @@
   </div>
   <div class="group-members">
     <% group.group_users.each do |member| %>
-    <% if member.user && member.user.is_deleted? %>
-      <% next %>
-    <% end %>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to group_group_user_path(group, member.user) do %><%= image_tag member.user.get_image, size:'40x40', class: "icon-img" %><% end %>
-      <%= member.user.name %></p>
+      <% if member.user && member.user.is_deleted? %>
+        <% next %>
+      <% end %>
+      <div class="d-flex justify-content-start">
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to group_group_user_path(group, member.user) do %><%= image_tag member.user.get_image, size:'40x40', class: "icon-img" %><% end %>
+        <%= member.user.name %></p>
 
+        <%= render 'public/group_users/dm', member: member, roomId: get_dm_room_id(current_user, member.user) %>
+
+      </div>
     <% end %>
   </div>
 </div>

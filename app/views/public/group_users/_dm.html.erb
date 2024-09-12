@@ -1,0 +1,9 @@
+<% unless member.user.id == current_user.id %>
+  <% if roomId.present? %>
+    <p class="user-show-room" style="margin-left: 10px; margin-top: 2px;">
+      <%= link_to "/rooms/#{roomId}", class: "btn btn-primary", style: "padding:0.2rem 0.4rem 0.2rem 0.4rem; border-radius: 20vh;" do %>
+        <i class="fa-solid fa-envelope"></i>
+      <% end %>
+    </p>
+  <% end %>
+<% end %>
