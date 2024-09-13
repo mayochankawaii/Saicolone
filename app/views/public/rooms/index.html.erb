@@ -6,36 +6,31 @@
         <h4 class="room-list-title">ダイレクトメッセージ一覧</h4><br></br>
       </div>
 <br></br>
-      <table class="table table-bordered">
-        <tr class="table-active">
-          <th colspan="2">ユーザー</th>
-          <th></th>
-        </tr>
-
-        <% @rooms.each do |room| %>
+      <% @rooms.each do |room| %>
+      <hr size="10">
+        <div class="d-flex">
           <% room.users.each do |user| %>
             <% next if user == current_user %> <!-- ログインユーザーと一致する場合は表示しない -->
-            <tr>
-              <td width="60">
-                <%= link_to room_path(room.id) do %>
-                  <%= image_tag user.get_image, size: '60x60', class: "icon-img" %>
-                <% end %>
-              </td>
-              <td width="100">
+            <div class="profile-img-frame">
+              <%= link_to room_path(room.id) do %>
+                <%= image_tag user.get_image, size: '60x60', class: "icon-img" %>
+              <% end %>
+            </div>
+            <div class="posted-chat-content" style="padding-left: 10px;">
+              <span>
                 <%= link_to user.name, room_path(room.id), class: "room-link" %>
-            </td>
+              </span>
           <% end %>
-            <td>
-            <% latest_message = room.direct_messages.order(created_at: :desc).first %>
-            <% if latest_message %>
-              <p><%= safe_join(latest_message.content.split("\n"), tag(:br)).html_safe %></p>
-            <% else %>
-              <p>メッセージがありません</p>
-            <% end %>
-            </td>
-          </tr>
+          <% latest_message = room.direct_messages.order(created_at: :desc).first %>
+          <% if latest_message %>
+            <br><small><%= safe_join(latest_message.content.split("\n"), tag(:br)).html_safe %></small>
+          </div>
+        </div>
+
+        <% else %>
+          <p>メッセージがありません</p>
         <% end %>
-      </table>
+      <% end %>
 
     </div>
   </div>

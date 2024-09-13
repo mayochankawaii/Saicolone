@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <div class="d-flex justify-content-between">
+        <h4 class="group-list-title">グループ一覧</h4><br></br>
+        <% if user_signed_in? %>
+          <%= link_to new_group_path, class: "btn btn-flat" do %>
+            <span>グループを作成</span>
+          <% end %>
+        <% end %>
+      </div>
+<br></br>
+      <table class="table table-bordered" style="table-layout: fixed;">
+        <tr class="table-active">
+          <th>グループ名</th>
+          <th width="100">参加人数</th>
+        </tr>
+
+        <% @groups.each do |group| %>
+          <tr>
+            <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+              <%= link_to group_path(group.id) do %>
+                <%= image_tag group.get_image, size: '60x60', class: "icon-img" %>
+              <% end %>
+              <% if group.owner == current_user %><i class="fa-regular fa-star"></i>&nbsp;&nbsp;<% end %><%= link_to group.title, group_path(group.id), class: "group-link" %>
+            </td>
+            <td width="100">
+              <i class="fa-solid fa-users"></i><%= group.users.select { |user| user.user_status == "有効" }.count %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+
+    </div>
+  </div>
+</div>

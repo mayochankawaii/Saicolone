@@ -1,29 +1,22 @@
 <h4>検索結果</h4>
 
-<table class="table table-bordered">
+<table class="table table-bordered" style="table-layout: fixed;">
   <tr class="table-active">
     <!--タグの中にbrタグを入れることで空白のセルを作れる-->
-    <th><br></th>
-    <th colspan="2">タイトル</th>
-    <th>参加人数</th>
+    <th>タイトル</th>
+    <th width="100">参加人数</th>
   </tr>
     <% if @groups.present? %>
     <% @groups.each do |group| %>
-        <td width="60">
-
+        <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
           <% if user_signed_in? %>
-          <%= link_to group_path(group.id) do %>
-            <%= image_tag group.get_image, size: '60x60', class: "icon-img" %>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to group.title,group %>
+            <%= link_to group_path(group.id) do %>
+              <%= image_tag group.get_image, size: '60x60', class: "icon-img" %>
+            <% end %>
+            <%= link_to group.title,group %>
           <% else %>
-
             <%= image_tag group.get_image, size: '60x60', class: "icon-img" %>
-        </td>
-        <td>
-          <%= group.title %>
+            <%= group.title %>
           <% end %>
 
           <% if current_user.present? %>
@@ -33,9 +26,6 @@
               &nbsp;&nbsp;<i class="fa-solid fa-star"></i>
             <% end %>
           <% end %>
-        </td>
-        <td>
-          <%= group.description %>
         </td>
         <td width="100">
           <i class="fa-solid fa-users"></i><%= group.users.select { |user| user.user_status == "有効" }.count %>

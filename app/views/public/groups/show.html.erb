@@ -11,13 +11,13 @@
   <div class="d-flex justify-content-between">
     <div class="d-flex" style="margin-top: 4px;">
       <%= image_tag @group.get_image, size: '100x100', class: "icon-img" %>
-      <h4 style="padding-top: 4rem; padding-left: 2rem;"><%= @group.title %></h4>
+      <h4 style="padding-left: 2rem;"><%= @group.title %></h4>
     </div>
   </div>
 
   <div class="py-4">
     <p><strong>説明</strong></p>
-    <p><%= @group.description %></p>
+    <p><%= safe_join(@group.description.split("\n"),tag(:br))%></p>
   </div>
 
   <% if user_signed_in? %>

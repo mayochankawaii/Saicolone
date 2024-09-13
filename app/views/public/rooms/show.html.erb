@@ -10,8 +10,8 @@
       <% @entries.each do |e| %>
         <div class="user-name">
         <strong>
-          <p><%= link_to "/users/#{e.user.id}" do %><%= image_tag e.user.get_image, size:'40x40', class: "icon-img" %><% end %>
-            <a class="rooms-user-link" href="/users/<%= e.user.id %>">
+          <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%= link_to "/users/#{e.user.id}" do %><%= image_tag e.user.get_image, size:'40x40', class: "icon-img" %><% end %>
+            <a class="rooms-user-link" href="/users/<%= e.user.id %>" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
               <%= e.user.name %>
             </a></p>
         </strong>

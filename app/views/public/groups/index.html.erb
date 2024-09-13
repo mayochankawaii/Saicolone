@@ -11,32 +11,26 @@
         <% end %>
       </div>
 <br></br>
-      <table class="table table-bordered">
-        <tr class="table-active">
-          <th colspan="2">グループ名</th>
-          <th>詳細</th>
-          <th>参加人数</th>
-        </tr>
-
-        <% @groups.each do |group| %>
-          <tr>
-            <td width="60">
-              <%= link_to group_path(group.id) do %>
-                <%= image_tag group.get_image, size: '60x60', class: "icon-img" %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to group.title, group_path(group.id), class: "group-link" %><% if group.owner == current_user %>&nbsp;&nbsp;<i class="fa-regular fa-star"></i><% end %>
-            </td>
-            <td>
-              <%= group.description %>
-            </td>
-            <td width="100">
-              <i class="fa-solid fa-users"></i><%= group.users.select { |user| user.user_status == "有効" }.count %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
+      <% @groups.each do |group| %>
+      <hr size="10">
+        <div class="d-flex">
+          <div class="profile-img-frame">
+            <%= link_to group_path(group.id) do %>
+              <%= image_tag group.get_image, size: '60x60', class: "icon-img" %>
+            <% end %>
+          </div>
+          <div class="posted-chat-content" style="padding-left: 10px;">
+            <span>
+              <% if group.owner == current_user %><i class="fa-regular fa-star"></i>&nbsp;&nbsp;<% end %>
+              <b><%= link_to group.title, group_path(group.id), class: "group-link" %></b>
+            </span>
+            <br><small><%= group.description %></small>
+          </div>
+          <div style="text-align: right; margin-left: auto; width: 60px; padding-top: 20px;">
+            <i class="fa-solid fa-users"></i><%= group.users.select { |user| user.user_status == "有効" }.count %>
+          </div>
+        </div>
+      <% end %>
 
     </div>
   </div>
