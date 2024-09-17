@@ -13,6 +13,7 @@ class Public::CharactersController < ApplicationController
   def new
     if current_user
       @character = Character.new
+      @other = @character.others.build
     else
       redirect_to new_user_session_path, alert: 'ログインが必要です。'
     end
@@ -54,7 +55,9 @@ class Public::CharactersController < ApplicationController
   private
 
   def character_params
-    params.require(:character).permit(:genre_id, :name, :status, :description, :image)
+    params.require(:character).permit(
+      :genre_id, :name, :status, :description, :image,
+      others_attributes:[:id, :character_id, :status, :_destroy])
   end
 
   def ensure_correct_user

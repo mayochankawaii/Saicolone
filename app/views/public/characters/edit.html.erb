@@ -18,6 +18,36 @@
           <%= f.label :status, 'ステータス' %>
           <%= f.text_area :status, rows:'8', class: "form-control text-input" %>
         </div>
+
+        <table>
+          <tr>
+          <!-- 動的に追加するフォーム -->
+          <td>
+          <div id="other-forms">
+             <%= f.fields_for :others do |other| %>
+              <%= render 'public/characters/other_fields', f: other %>
+            <% end %>
+          </div>
+
+          <!-- 動的に追加するフォームを挿入する箇所 -->
+            <div id="detail-association-insertion-point"></div>
+          </td>
+
+          </tr>
+        </table>
+
+        <!-- 追加ボタンの記述 -->
+        <%= link_to_add_association(f, :others,
+          class: 'add_fields',
+          id: 'add-btn',
+          data: {
+            association_insertion_node: '#detail-association-insertion-point',
+            association_insertion_method: 'after'
+          }
+        ) do %>
+          <button class="btn btn-primary" style="width: 100%; margin-top: 10px; margin-bottom: 10px;"> ＋技能を追加 </button>
+        <% end %>
+
         <div>
           <%= f.label :description, 'キャラクター説明' %>
           <%= f.text_area :description, rows:'8', class: "form-control text-input" %>

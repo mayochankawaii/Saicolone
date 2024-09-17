@@ -11,6 +11,7 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
+import "cocoon"
 import "../stylesheets/application";
 
 Rails.start()
@@ -20,3 +21,4 @@ ActiveStorage.start()
 require('jquery');
 
 import "./btn"
+import "./other"

@@ -21,6 +21,14 @@
               <td width="140">ステータス</td>
               <td><%= @character.status %></td>
             </tr>
+            <tr>
+              <td width="140">追加ステータス</td>
+              <td>
+                <% @character.others.each do |other| %>
+                  <%= other.status %>&nbsp;
+                <% end %>
+              </td>
+            </tr>
           </table>
 
           <div style="padding: 0.75rem;">

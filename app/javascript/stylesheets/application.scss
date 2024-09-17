@@ -426,6 +426,10 @@ button.btn {
   object-fit: contain;
 }
 
+.nested-field-container {
+  display: flex;
+}
+
 
 /* 画面サイズ設定 */
 @media(max-width: 768px) {  // mdサイズ以下の場合に適用
