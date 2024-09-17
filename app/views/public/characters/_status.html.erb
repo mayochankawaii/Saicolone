@@ -1,30 +1,28 @@
-<%= form_with model: character, local: true do |f| %>
 <tr>
   <td></td>
   <% (1..10).each do |i| %>
     <td>
-      <!-- 各列の合計を表示するフィールド -->
       <%= f.text_field :total, id: "character_total_#{i}", readonly: true, style: "width: 2.5em;" %>
     </td>
   <% end %>
 </tr>
 <tr>
   <td><small>基礎値</small></td>
-    <% (1..5).each do |i| %>
-      <td>
-        <%= f.select "SA#{i}".to_sym, (3..18).to_a, include_blank: true, id: "character_SA#{i}" %>
-      </td>
-    <% end %>
-    <% (6..7).each do |i| %>
-      <td>
-        <%= f.select "SA#{i}".to_sym, (6..18).to_a, include_blank: true, id: "character_SA#{i}" %>
-      </td>
-    <% end %>
-      <td>
-        <%= f.select "SA8".to_sym, (6..21).to_a, include_blank: true, id: "character_SA8" %>
-      </td>
-    <td id="calc_result_1"></td>
-    <td id="calc_result_2"></td>
+  <% (1..5).each do |i| %>
+    <td>
+      <%= f.select "SA#{i}".to_sym, (3..18).to_a, include_blank: true, id: "character_SA#{i}" %>
+    </td>
+  <% end %>
+  <% (6..7).each do |i| %>
+    <td>
+      <%= f.select "SA#{i}".to_sym, (6..18).to_a, include_blank: true, id: "character_SA#{i}" %>
+    </td>
+  <% end %>
+  <td>
+    <%= f.select "SA8".to_sym, (6..21).to_a, include_blank: true, id: "character_SA8" %>
+  </td>
+  <td id="calc_result_1"></td>
+  <td id="calc_result_2"></td>
 </tr>
 <tr>
   <td><small>増減分</small></td>
@@ -34,4 +32,3 @@
     </td>
   <% end %>
 </tr>
-<% end %>

@@ -21,5 +21,5 @@ ActiveStorage.start()
 require('jquery');
 
 import "./btn"
-import "./other"
 import "./status"
+import "./other"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_09_17_063253) do
+ActiveRecord::Schema.define(version: 2024_09_17_192831) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -62,6 +62,34 @@ ActiveRecord::Schema.define(version: 2024_09_17_063253) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "SA1"
+    t.integer "SA2"
+    t.integer "SA3"
+    t.integer "SA4"
+    t.integer "SA5"
+    t.integer "SA6"
+    t.integer "SA7"
+    t.integer "SA8"
+    t.integer "SB1"
+    t.integer "SB2"
+    t.integer "SB3"
+    t.integer "SB4"
+    t.integer "SB5"
+    t.integer "SB6"
+    t.integer "SB7"
+    t.integer "SB8"
+    t.integer "SB9"
+    t.integer "SB10"
+    t.integer "total1"
+    t.integer "total2"
+    t.integer "total3"
+    t.integer "total4"
+    t.integer "total5"
+    t.integer "total6"
+    t.integer "total7"
+    t.integer "total8"
+    t.integer "total9"
+    t.integer "total10"
   end
 
   create_table "direct_messages", force: :cascade do |t|
@@ -136,8 +164,8 @@ ActiveRecord::Schema.define(version: 2024_09_17_063253) do
 
   create_table "others", force: :cascade do |t|
     t.integer "character_id"
-    t.string "skill", null: false
-    t.string "point", null: false
+    t.string "skill"
+    t.string "point"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["character_id"], name: "index_others_on_character_id"

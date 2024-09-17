@@ -17,6 +17,19 @@
               <td width="140">ジャンル</td>
               <td><%= Genre.find(@character.genre_id).name %></td>
             </tr>
+          </table>
+
+        <table class="table status-table">
+          <thead>
+            <%= render 'public/characters/allstatus' %>
+          </thead>
+          <tbody>
+            <%= render 'public/characters/statusa', character: @character %>
+          </tbody>
+        </table>
+
+
+          <table class="table">
             <tr>
               <td width="140">ステータス</td>
               <td><%= @character.status %></td>
@@ -29,20 +42,36 @@
                 <% end %>
               </td>
             </tr>
+            <tr>
+              <td width="140">初期正気度</td>
+              <td><%= @character.initial_sanity %></td>
+            </tr>
+            <tr>
+              <td width="140">アイデア</td>
+              <td><%= @character.idea %></td>
+            </tr>
+            <tr>
+              <td width="140">知識</td>
+              <td><%= @character.knowledge %></td>
+            </tr>
+            <tr>
+              <td width="140">DB</td>
+              <td><%= @character.db_result %></td>
+            </tr>
           </table>
 
           <div style="padding: 0.75rem;">
           <% if @character.description.present? %>
             キャラクター説明<br><br>
-            <%= safe_join(@character.description.split("\n"),tag(:br))%><br>
+            <%= safe_join(@character.description.split("\n"), tag(:br)) %><br>
           <% end %>
 
           <br></br>
             <div class="justify-content-end">
               <% if @character.user == current_user %>
-                <%= link_to "キャラクター一覧へ", characters_path, class:"btn btn-primary" %>
-                <%= link_to "編集する", edit_character_path(@character), class:"btn btn-primary" %>
-                <%#= link_to "削除", @character, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger destroy_character_#{@character.id}"%>
+                <%= link_to "キャラクター一覧へ", characters_path, class: "btn btn-primary" %>
+                <%= link_to "編集する", edit_character_path(@character), class: "btn btn-primary" %>
+                <%#= link_to "削除", @character, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger destroy_character_#{@character.id}" %>
               <% end %>
             </div>
           </div>

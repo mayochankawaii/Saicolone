@@ -57,6 +57,7 @@ class Public::CharactersController < ApplicationController
   def character_params
     params.require(:character).permit(
       :genre_id, :name, :status, :skill, :point, :description, :image,
+      :total1, :total2, :total3, :total4, :total5, :total6, :total7, :total8,
       others_attributes:[:id, :character_id, :skill, :point, :_destroy])
   end
 

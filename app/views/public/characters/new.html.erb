@@ -24,7 +24,7 @@
             <%= render 'public/characters/allstatus' %>
           </thead>
           <tbody>
-            <%= render 'public/characters/status', character: @character %>
+            <%= render 'public/characters/status', f: f %>
           </tbody>
         </table>
 
@@ -91,6 +91,10 @@
         <% end %>
 
         <div>
+          <%= f.label :status, 'ステータス' %>
+          <%= f.text_area :status, rows:'8', class: "form-control text-input" %>
+        </div>
+        <div>
           <%= f.label :description, 'キャラクター説明' %>
           <%= f.text_area :description, rows:'8', class: "form-control text-input" %>
         </div><br>
@@ -101,3 +105,4 @@
     </div>
   </div>
 </div>
+<%= javascript_pack_tag 'status', 'data-turbolinks-track': 'reload' %>
