@@ -4,17 +4,19 @@
       <h4>キャラクター新規登録</h4>
       <%= form_with model:@character, local: true do |f| %>
         <%= render "public/shared/error_messages", resource: f.object %>
-        <div>
-          <%= f.label :image, 'キャラクター画像' %>
-          <%= f.file_field :image %>
-        </div>
-        <div>
-          <%= f.label :genre, 'ジャンル' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: true %>
-        </div>
-        <div>
-          <%= f.label :name, 'キャラクター名' %>
-          <%= f.text_field :name, autofocus: true, class: "form-control text-input", style: "width:40%" %>
+        <div class="character-1">
+          <div>
+            画像
+            <%= f.file_field :image %>
+          </div>
+          <div>
+            ジャンル&nbsp;&nbsp;
+            <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: true %>
+          </div>
+          <div>
+            キャラクター名
+            <%= f.text_field :name, autofocus: true, style: "width:40%" %>
+          </div>
         </div>
 
         <table class="table status-table">
@@ -25,6 +27,40 @@
             <%= render 'public/characters/status', character: @character %>
           </tbody>
         </table>
+
+        <div class="character-2">
+          <div class="character-3">
+            <div>初期正気度</div>
+            <div id="initial_sanity">0</div> <!-- character_total_3 * 5 を表示 -->
+          </div>
+
+          <div class="character-3">
+            <div>正気度</div>
+            <div>
+              <input type="number" id="sanity_form" style="width: 3em;"> <!-- 数字入力フォーム -->
+            </div>
+          </div>
+
+          <div class="character-3">
+            <div>幸運</div>
+            <div id="luck">0</div> <!-- character_total_3 * 5 を表示 -->
+          </div>
+
+          <div class="character-3">
+            <div>アイデア</div>
+            <div id="idea">0</div> <!-- character_total_7 * 5 を表示 -->
+          </div>
+
+          <div class="character-3">
+            <div>知識</div>
+            <div id="knowledge">0</div> <!-- character_total_8 * 5 を表示 -->
+          </div>
+
+          <div class="character-3">
+            <div>DB</div>
+            <div id="db">0</div> <!-- character_total_1 + character_total_6 による条件の結果を表示 -->
+          </div>
+        </div>
 
         <table style="margin-top: 20px;">
           <tr>

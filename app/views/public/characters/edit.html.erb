@@ -5,13 +5,13 @@
       <%= form_with model:@character, local: true do |f| %>
         <%= render "public/shared/error_messages", resource: f.object %>
         <div>
-          <%= f.label :image, 'キャラクター画像' %>
+          画像
           <%= f.file_field :image %>
-          <%= f.label :genre, 'ジャンル' %>
+          ジャンル
           <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: true %>
         </div>
         <div>
-          <%= f.label :name, 'キャラクター名' %>
+          キャラクター名
           <%= f.text_field :name, autofocus: true, class: "form-control text-input", style: "width:40%" %>
         </div>
         <div>
