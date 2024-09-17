@@ -56,8 +56,8 @@ class Public::CharactersController < ApplicationController
 
   def character_params
     params.require(:character).permit(
-      :genre_id, :name, :status, :description, :image,
-      others_attributes:[:id, :character_id, :status, :_destroy])
+      :genre_id, :name, :status, :skill, :point, :description, :image,
+      others_attributes:[:id, :character_id, :skill, :point, :_destroy])
   end
 
   def ensure_correct_user

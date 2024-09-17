@@ -1,5 +1,6 @@
 class Other < ApplicationRecord
   belongs_to :character
 
-  validates :status, presence: true
+  validates :skill, presence: true
+  validates :point, presence: true
 end

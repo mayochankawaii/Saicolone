@@ -5,6 +5,8 @@ class CreateCharacters < ActiveRecord::Migration[6.1]
       t.integer :genre_id
       t.string :name
       t.string :status
+      t.string :skill
+      t.string :point
       t.text :description
 
       t.timestamps

@@ -22,3 +22,4 @@ require('jquery');
 
 import "./btn"
 import "./other"
+import "./status"

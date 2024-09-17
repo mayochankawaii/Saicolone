@@ -430,6 +430,16 @@ button.btn {
   display: flex;
 }
 
+.status-table {
+  margin-top: 20px;
+  table-layout: fixed;
+  width: 100%;
+  border: 1px solid #dee2e6;
+}
+
+.status-table td {
+  padding: 0.3rem;
+}
 
 /* 画面サイズ設定 */
 @media(max-width: 768px) {  // mdサイズ以下の場合に適用

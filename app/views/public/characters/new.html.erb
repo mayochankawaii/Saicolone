@@ -9,27 +9,38 @@
           <%= f.file_field :image %>
         </div>
         <div>
-          <%= f.label :genre, 'ジャンル' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= f.label :genre, 'ジャンル' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: true %>
         </div>
         <div>
           <%= f.label :name, 'キャラクター名' %>
           <%= f.text_field :name, autofocus: true, class: "form-control text-input", style: "width:40%" %>
         </div>
-        <div>
-          <%= f.label :status, 'ステータス' %>
-          <%= f.text_area :status, rows:'8', class: "form-control text-input" %>
-        </div>
 
-        <!-- 動的に追加するフォームを挿入する箇所 -->
-        <div id="detail-association-insertion-point"></div>
+        <table class="table status-table">
+          <thead>
+            <%= render 'public/characters/allstatus' %>
+          </thead>
+          <tbody>
+            <%= render 'public/characters/status', character: @character %>
+          </tbody>
+        </table>
 
-        <!-- 動的に追加するフォーム -->
-        <div id="other-forms">
-           <%= f.fields_for :others do |other| %>
-            <%= render 'public/characters/other_fields', f: other %>
-          <% end %>
-        </div><br>
+        <table style="margin-top: 20px;">
+          <tr>
+            <!-- 動的に追加するフォーム -->
+            <td>
+              <div id="other-forms">
+                <%= f.fields_for :others do |other| %>
+                  <%= render 'public/characters/other_fields', f: other %>
+                <% end %>
+              </div>
+
+              <!-- 動的に追加するフォームを挿入する箇所 -->
+              <div id="detail-association-insertion-point"></div>
+            </td>
+          </tr>
+        </table>
 
         <!-- 追加ボタンの記述 -->
         <%= link_to_add_association(f, :others,
@@ -40,16 +51,16 @@
             association_insertion_method: 'after'
           }
         ) do %>
-          <button class="btn btn-primary" style="width: 100%;"> ＋技能を追加 </button>
-        <% end %><hr>
+          <button class="btn btn-primary" style="width: 100%; margin-top: 10px; margin-bottom: 10px;">＋技能を追加</button>
+        <% end %>
 
         <div>
           <%= f.label :description, 'キャラクター説明' %>
           <%= f.text_area :description, rows:'8', class: "form-control text-input" %>
         </div><br>
-      <button class="btn btn-success">
-        <span>新規投稿</span>
-      </button>
+        <button class="btn btn-success">
+          <span>新規投稿</span>
+        </button>
       <% end %>
     </div>
   </div>

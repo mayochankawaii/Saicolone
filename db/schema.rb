@@ -56,7 +56,9 @@ ActiveRecord::Schema.define(version: 2024_09_17_063253) do
     t.integer "user_id"
     t.integer "genre_id"
     t.string "name"
-    t.text "status"
+    t.string "status"
+    t.string "skill"
+    t.string "point"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -134,7 +136,8 @@ ActiveRecord::Schema.define(version: 2024_09_17_063253) do
 
   create_table "others", force: :cascade do |t|
     t.integer "character_id"
-    t.string "status", null: false
+    t.string "skill", null: false
+    t.string "point", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["character_id"], name: "index_others_on_character_id"
