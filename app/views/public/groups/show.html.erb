@@ -1,5 +1,5 @@
 <div class="sidebars">
-  <div class="sidebar is-closed" style="padding: 1rem; height: vh-100%;">
+  <div class="sidebar is-closed">
     <button class="sidebar-toggle is-closed"><i class="fa fa-plus icon"></i></button>
     <%= render 'public/group_users/index', group: @group, user: @user, isRoom: @isRoom, roomId: @roomId %>
     <%= render 'public/group_characters/index', group: @group, characters: @characters, character_lists: @character_lists %>
@@ -7,11 +7,11 @@
   </div>
 </div>
 
-<div class="messages" style="padding-right: 1rem; padding-left: 1rem;">
+<div class="messages">
   <div class="d-flex justify-content-between">
-    <div class="d-flex" style="margin-top: 4px;">
+    <div class="d-flex group-status">
       <%= image_tag @group.get_image, size: '100x100', class: "icon-img" %>
-      <h4 style="padding-left: 2rem;"><%= @group.title %></h4>
+      <h4 class="group-title"><%= @group.title %></h4>
     </div>
   </div>
 

@@ -15,10 +15,8 @@
           <% next %>
         <% end %>
           <div class="col-lg-6 col-12">
-            <!--<div class="col-md-4" style="max-width: 20%; overflow: hidden; position: relative;">-->
             <div class="col-md-4 img-character">
               <%= link_to group_group_character_path(@group, character) do %>
-                <%#= image_tag character.image, class: "img-fluid", style: "width: 100%; object-fit: cover; object-position: center;" %>
                 <%= image_tag character.get_image, class: "img-fluid character-img-index" %>
               <% end %>
             </div>

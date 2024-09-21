@@ -4,11 +4,11 @@
   <% if message.user && message.user.is_deleted? %>
     <% next %>
   <% end %>
-  <div class="d-flex" style="padding-bottom: 16px;">
+  <div class="d-flex message-area">
     <div class="profile-img-frame">
       <%= image_tag message.user.get_image, size:'60x60', class: "icon-img" %>
     </div>
-    <div class="posted-chat-content" style="padding-left: 10px;">
+    <div class="posted-chat-content message-frame">
       <span><b><%= message.user.name %></b></span>&nbsp;&nbsp;<small><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></small>
       <!-- メッセージの表示 -->
       <p><%= safe_join(message.content.split("\n"),tag(:br))%></p>
@@ -16,7 +16,7 @@
     <div style="text-align: right; margin-left: auto;">
       <% if message.user == current_user %>
         <%= link_to group_message_path(message.group_id, message.id), method: :delete, remote: true do %>
-          <button class="btn btn-outline-secondary" style="padding:0rem 0.18rem 0rem 0.2rem; border-radius: 20vh;"><i class="fa-regular fa-circle-xmark"></i></button>
+          <button class="btn message-delete btn-outline-secondary" style="padding: 0rem 0.18rem 0rem 0.2rem; border-radius: 20vh;"><i class="fa-regular fa-circle-xmark"></i></button>
         <% end %>
       <% end %>
     </div>
