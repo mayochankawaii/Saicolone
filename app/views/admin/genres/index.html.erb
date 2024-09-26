@@ -4,6 +4,7 @@
       <h4>ジャンル一覧・追加</h4>
       <br>
       <%= form_with(model: [:admin, @genre]) do |f| %>
+      <%= render "public/shared/error_messages", resource: f.object %>
         <p>ジャンル名　　<%= f.text_field :name %>
           <%= f.submit '新規登録', class: "btn btn-success" %>
         </p>
