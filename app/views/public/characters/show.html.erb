@@ -29,7 +29,7 @@
             <%= safe_join(@character.description.split("\n"),tag(:br))%><br>
           <% end %>
 
-          <br></br>
+          <br><br>
             <div class="justify-content-end">
               <% if @character.user == current_user %>
                 <%= link_to "キャラクター一覧へ", characters_path, class:"btn btn-primary" %>

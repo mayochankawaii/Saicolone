@@ -33,7 +33,7 @@
             <%= safe_join(@character.description.split("\n"),tag(:br))%><br>
           <% end %>
 
-          <br></br>
+          <br><br>
             <div class="justify-content-end">
               <%= link_to "グループから外す", admin_group_group_character_path(@group, @character), method: :delete, data: { confirm: 'このキャラクターをグループから外しますか？' }, class: "btn btn-danger destroy_character_#{@character.id}"%>
               <%= link_to "グループに戻る", admin_group_path(@group), class:"btn btn-primary" %>
