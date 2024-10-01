@@ -10,9 +10,9 @@ class Public::MessagesController < ApplicationController
     @message.group_id = @group.id
     @message.score = Language.get_data(message_params[:content])  #この行を追加
     if @message.save
-      flash.now[:notice] = "メッセージの投稿に成功しました。"
+      flash.now[:notice] = "投稿しました"
     else
-      flash.now[:alert] ="メッセージの投稿に失敗しました。"
+      flash.now[:alert] ="投稿に失敗しました"
     end
   end
 
@@ -20,7 +20,7 @@ class Public::MessagesController < ApplicationController
     @group = Group.find(params[:group_id])
     @message = Message.find(params[:id])
     @message.destroy
-    flash.now[:notice] = "メッセージを削除しました。"
+    flash.now[:notice] = "メッセージを削除しました"
   end
 
   private

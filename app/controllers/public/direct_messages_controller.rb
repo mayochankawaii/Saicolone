@@ -9,9 +9,9 @@ class Public::DirectMessagesController < ApplicationController
     @direct_message.user_id = current_user.id
     @direct_message.room_id = @room.id
     if @direct_message.save
-      flash.now[:notice] = "メッセージの投稿に成功しました。"
+      flash.now[:notice] = "投稿しました"
     else
-      flash.now[:alert] ="メッセージの投稿に失敗しました。"
+      flash.now[:alert] ="投稿に失敗しました"
     end
   end
 
@@ -19,7 +19,7 @@ class Public::DirectMessagesController < ApplicationController
     @room = Room.find(params[:room_id])
     @direct_message = DirectMessage.find(params[:id])
     @direct_message.destroy
-    flash.now[:notice] = "メッセージを削除しました。"
+    flash.now[:notice] = "メッセージを削除しました"
   end
 
   private
