@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     # mount ActionCable.server => '/cable'
     resources :characters
     resources :schedules, except: [:index]
+    resources :notifications, only: [:update]
     get "/search", to: "searches#search"
   end
 
